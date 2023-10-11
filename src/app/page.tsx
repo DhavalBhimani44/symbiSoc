@@ -43,10 +43,10 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col justify-center items-center text-center">
-              <div className="mt-24 mb-10 font-bold tracking-wide text-slate-900 lg:text-7xl md:text-3xl sm:text-sm underline-offset-8 decoration-solid decoration-from-font ">
-                <p>Club's at <span className="text-red-600">SIT</span></p>
-              </div>
-              <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 mx-auto flex flex-col justify-center items-center">
+              <h1 className="mt-24 mb-20 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
+                Club's at <span className="text-red-600">SIT</span>
+              </h1>
+              <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 flex flex-col justify-center items-center">
                 <div className="lg:max-w-3xl">
                   <Marquee direction="left">
                     <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>

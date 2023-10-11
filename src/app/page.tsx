@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
   return (
@@ -41,23 +42,39 @@ export default function Home() {
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#ae5e66] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"/>
             </div>
 
-
-            <div>
-              <div className="mx-auto max-w-6xl px-6 lg:px-8">
-                <div className="mt-16 flow-root sm:mt-24">
-                  <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                    <Image
-                     src=''
-                     width={1364} 
-                     height={866} 
-                     quality={100} 
-                     alt="prodcut-preview"
-                     className="rounded-md bg-white p-2 sm:pd-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
-                    />
-                  </div>
+            <div className="flex flex-col justify-center items-center text-center">
+              <div className="mt-24 mb-10 font-bold tracking-wide text-slate-900 lg:text-7xl md:text-3xl sm:text-sm underline-offset-8 decoration-solid decoration-from-font ">
+                <p>Club's at <span className="text-red-600">SIT</span></p>
+              </div>
+              <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 mx-auto flex flex-col justify-center items-center">
+                <div className="lg:max-w-3xl">
+                  <Marquee direction="left">
+                    <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                  </Marquee>
+                </div>
+                <div className="lg:max-w-2xl">
+                  <Marquee direction="right">
+                    <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                  </Marquee>
+                </div>
+                <div className="lg:max-w-4xl">
+                  <Marquee direction="left">
+                    <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                    <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                    <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                    <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                  </Marquee>
                 </div>
               </div>
             </div>
+
+            
           </div>
         </div>
 

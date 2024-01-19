@@ -42,35 +42,40 @@ export default function Home() {
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#ae5e66] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"/>
             </div>
 
-            <div className="flex flex-col justify-center items-center text-center">
-              <h1 className="mt-24 mb-20 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-                Club's at <span className="text-red-600">SIT</span>
-              </h1>
-              <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 flex flex-col justify-center items-center">
-                <div className="lg:max-w-3xl">
-                  <Marquee direction="left">
-                    <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                  </Marquee>
+            <div className="flex lg:flex-row flex-col">
+              <div className="flex flex-col justify-left items-center text-center lg:max-w-3/4">
+                <h1 className="mt-24 mb-20 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
+                  Club's at <span className="text-red-600">SIT</span>
+                </h1>
+                <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 flex flex-col justify-center items-center">
+                  <div className="lg:max-w-3xl">
+                    <Marquee direction="left">
+                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    </Marquee>
+                  </div>
+                  <div className="lg:max-w-2xl">
+                    <Marquee direction="right">
+                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    </Marquee>
+                  </div>
+                  <div className="lg:max-w-4xl">
+                    <Marquee direction="left">
+                      <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                      <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                      <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                      <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                    </Marquee>
+                  </div>
                 </div>
-                <div className="lg:max-w-2xl">
-                  <Marquee direction="right">
-                    <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                  </Marquee>
-                </div>
-                <div className="lg:max-w-4xl">
-                  <Marquee direction="left">
-                    <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                    <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                    <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                    <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                  </Marquee>
-                </div>
+              </div>
+              <div className="lg:max-w-1/4 flex justify-center items-center">
+                <div>hi how are you</div>
               </div>
             </div>
 

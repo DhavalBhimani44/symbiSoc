@@ -8,7 +8,7 @@ import Marquee from "react-fast-marquee";
 export default function Home() {
   return (
     <>
-      <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
+      {/* <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
         <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
           <p className="text-sm font-semibold text-gray-700">
             SymbiSoc is under development!
@@ -29,7 +29,7 @@ export default function Home() {
         })} href='/dashboard' target="_blank">
           Get Started <ArrowRight className="ml-2 h-5 w-5"/>
         </Link>
-      </MaxWidthWrapper>
+      </MaxWidthWrapper> */}
 
         {/* value proposition section */}
 
@@ -72,11 +72,14 @@ export default function Home() {
                       <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
                     </Marquee>
                   </div>
-                </div>
+                </div>                
               </div>
-              <div className="lg:max-w-1/4 flex justify-center items-center">
-                <div>hi how are you</div>
+              <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
+                <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
+                <div className="h-32">Username</div>
+                <div className="h-32">Password</div>
               </div>
+              
             </div>
 
             

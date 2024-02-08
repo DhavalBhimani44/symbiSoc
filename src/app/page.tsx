@@ -1,3 +1,4 @@
+import Login from "@/components/Login";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -75,9 +76,7 @@ export default function Home() {
                 </div>                
               </div>
               <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
-                <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
-                <div className="h-32">Username</div>
-                <div className="h-32">Password</div>
+                <Login/>
               </div>
               
             </div>

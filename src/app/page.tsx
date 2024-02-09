@@ -44,7 +44,7 @@ export default function Home() {
 
             <div className="flex lg:flex-row flex-col">
               <div className="flex flex-col justify-left items-center text-center lg:max-w-3/4">
-                <h1 className="mt-24 mb-20 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
+                <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
                   Club's at <span className="text-red-600">SIT</span>
                 </h1>
                 <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 flex flex-col justify-center items-center">
@@ -56,7 +56,7 @@ export default function Home() {
                       <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
                   </div>
-                  <div className="lg:max-w-2xl">
+                  <div className="lg:max-w-4xl">
                     <Marquee direction="right">
                       <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
@@ -66,23 +66,25 @@ export default function Home() {
                   </div>
                   <div className="lg:max-w-4xl">
                     <Marquee direction="left">
-                      <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                      <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                      <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
-                      <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="px-5 py-3"/>
+                      <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
                   </div>
                 </div>                
               </div>
               <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
                 <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
-                <div className="h-32">Username</div>
-                <div className="h-32">Password</div>
-              </div>
-              
-            </div>
-
-            
+                <div className="w-lg h-32">Username</div>
+                <div className="w-lg h-32">Password</div>
+                <div className="w-lg h-32">
+                  <Link className={buttonVariants({size: 'lg',className: 'mt-5'})} href='/home' target="_blank">
+                    Login <ArrowRight className="ml-2 h-5 w-5"/>
+                  </Link>
+                </div>
+              </div>              
+            </div>            
           </div>
         </div>
 

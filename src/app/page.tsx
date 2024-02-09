@@ -48,28 +48,43 @@ export default function Home() {
                   Club's at <span className="text-red-600">SIT</span>
                 </h1>
                 <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl sm:min-w-min h-32 flex flex-col justify-center items-center">
+                  <div className="lg:max-w-4xl">
+                    <Marquee direction="left">
+                      <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/wwr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/sym-music-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/brushes-to-pixels-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/gdsc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/tpc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                    </Marquee>
+                  </div>
                   <div className="lg:max-w-3xl">
-                    <Marquee direction="left">
-                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    </Marquee>
-                  </div>
-                  <div className="lg:max-w-4xl">
                     <Marquee direction="right">
-                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/space-astronomy-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>                  
+                      <Image src='/gdsc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/wwr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/sym-music-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
                   </div>
                   <div className="lg:max-w-4xl">
                     <Marquee direction="left">
+                      <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/cbc-logo.png' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/wwr-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/gdsc-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/space-astronomy-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/mosaic-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/brushes-to-pixels-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
+                      <Image src='/tpc-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ai-club-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ar-vr-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/codex-logo.jpg' width={220} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
                   </div>
                 </div>                

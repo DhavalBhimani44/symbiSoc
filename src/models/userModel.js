@@ -2,9 +2,11 @@ import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
     username: {
-        type : Int,
+        type : Number,
         required : [true, "Please provide an username"],
         unique : true,
+        min: 11,
+        max: 11,
     },
     password: {
         type : String,

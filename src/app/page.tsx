@@ -1,3 +1,4 @@
+import Login from "@/components/Login";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -91,15 +92,13 @@ export default function Home() {
               </div>
               <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
                 <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
-                <div className="w-lg h-32">Username</div>
-                <div className="w-lg h-32">Password</div>
-                <div className="w-lg h-32">
-                  <Link className={buttonVariants({size: 'lg',className: 'mt-5'})} href='/home' target="_blank">
-                    Login <ArrowRight className="ml-2 h-5 w-5"/>
-                  </Link>
-                </div>
-              </div>              
-            </div>            
+                <div className="h-32">Username</div>
+                <div className="h-32">Password</div>
+              </div>
+              
+            </div>
+
+            
           </div>
         </div>
 
@@ -118,8 +117,8 @@ export default function Home() {
             <li className="md:flex-1">
               <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
                 <span className="text-sm font-medium text-violet-600">Step 1</span>
-                <span className="text-xl font-semibold">Sign up for an account</span>
-                <span className="mt-2 text-zinc-700">Sign up using your PRN</span>
+                <span className="text-xl font-semibold">Login your account</span>
+                <span className="mt-2 text-zinc-700">Login your account using your PRN and password(check your email!).</span>
               </div>
             </li>
             <li className="md:flex-1">

@@ -14,8 +14,6 @@ const Navbar = () => {
                         <span>symbiSoc.</span>
                     </Link>
 
-                    {/* todo:mobile navbar */}
-
                     <div className="hidden items-center space-x-4 sm:flex">
                         <>
                         </>

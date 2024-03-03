@@ -1,4 +1,3 @@
-import Login from "@/components/Login";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -30,7 +29,7 @@ export default function Home() {
         })} href='/dashboard' target="_blank">
           Get Started <ArrowRight className="ml-2 h-5 w-5"/>
         </Link>
-      </MaxWidthWrapper> */}
+      </MaxWidthWrapper>  */}
 
         {/* value proposition section */}
 

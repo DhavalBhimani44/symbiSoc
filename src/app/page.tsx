@@ -1,11 +1,23 @@
+"use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const router = useRouter();
+  const onSignUp = () => {
+    router.push('/sign-up');
+  }
+
+  const onSignIn = () => {
+    router.push('/sign-in');
+  }
+
   return (
     <>
       {/* <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
@@ -91,8 +103,18 @@ export default function Home() {
               </div>
               <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
                 <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
-                <div className="h-32">Username</div>
-                <div className="h-32">Password</div>
+                <div className="flex w-full h-32 space-x-2">
+                  <div className="text-xl">Don't have an account, please</div>
+                  <Button onClick={onSignUp} className="text-lg">
+                    Sign Up
+                  </Button>
+                </div>
+                <div className="flex w-full h-32 space-x-2">
+                  <div className="text-xl">Already have an account?</div>
+                  <Button onClick={onSignIn} className="text-lg">
+                    Sign In
+                  </Button>
+                </div>
               </div>
               
             </div>

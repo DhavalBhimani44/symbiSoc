@@ -46,44 +46,51 @@ const SignUpForm = () => {
   };
 
   return (
+    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-r from-emerald-400 to-cyan-400'>
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
-        <div className='space-y-2'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center'>
+        <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>
+          <div className='flex w-3/4 justify-center items-center'>
           <FormField
             control={form.control}
             name='username'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
                 <FormControl>
-                  <Input placeholder='johndoe' {...field} />
+                  <Input className='w-64 shadow-lg' placeholder='johndoe' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          </div>
+          <div className='flex w-3/4 justify-center items-center'>
           <FormField
             control={form.control}
             name='email'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                 <FormControl>
-                  <Input placeholder='mail@example.com' {...field} />
+                  <Input className='w-64 shadow-lg' placeholder='mail@example.com' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          </div>
+          <div className='flex w-3/4 justify-center items-center'>
           <FormField
             control={form.control}
             name='password'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
                 <FormControl>
                   <Input
                     type='password'
+                    className='w-64 shadow-lg'
                     placeholder='Enter your password'
                     {...field}
                   />
@@ -92,15 +99,18 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
+          </div>
+          <div className='flex w-3/4 justify-center items-center'>
           <FormField
             control={form.control}
             name='confirmPassword'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Re-Enter your password</FormLabel>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>Re-enter Password</div></FormLabel>
                 <FormControl>
                   <Input
                     placeholder='Re-Enter your password'
+                    className='w-64 shadow-lg'
                     type='password'
                     {...field}
                   />
@@ -109,21 +119,27 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
+          </div>
         </div>
-        <Button className='w-full mt-6' type='submit'>
-          Sign up
-        </Button>
+        <div className='flex flex-col w-full justify-center items-center mt-6'>
+          <Button className='w-max text-md shadow-inner' type='submit'>
+            Sign up
+          </Button>
+        </div>
       </form>
-      <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+      <div className='mx-auto my-4 flex w-3/4 items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
         or
       </div>
-      <p className='text-center text-sm text-gray-600 mt-2'>
-        If you don&apos;t have an account, please&nbsp;
-        <Link className='text-blue-500 hover:underline' href='/sign-in'>
-          Sign in
-        </Link>
-      </p>
+      <div className='flex justify-center items-center text-gray-600 my-2 text-sm'>
+        <div>
+          Already have an account ?, please&nbsp;
+          <Link className='text-blue-500 hover:underline' href='/sign-in'>
+            Sign in
+          </Link>
+        </div>
+      </div>
     </Form>
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@ export async function POST(req: Request){
                 email: email
             }
         })
-        if(existingUserByEmail){
+        if(!existingUserByEmail){
             return NextResponse.json({message: "Email already exists"}, {status: 409})
         }
 
@@ -23,7 +23,7 @@ export async function POST(req: Request){
                 username: username
             }
         })
-        if(existingUserByUsername){
+        if(!existingUserByUsername){
             return NextResponse.json({message: "Username already exists"}, {status: 409})
         }
 

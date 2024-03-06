@@ -15,7 +15,7 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { FormSchema } from '@/app/validationSchema';
 

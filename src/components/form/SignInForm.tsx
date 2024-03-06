@@ -14,7 +14,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { signInSchema } from '@/app/validationSchema';
 import { Sign } from 'crypto';
 

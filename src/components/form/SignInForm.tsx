@@ -1,5 +1,4 @@
 'use client';
-
 import { useForm } from 'react-hook-form';
 import {
   Form,
@@ -14,30 +13,35 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { signInSchema } from '@/app/validationSchema';
+import { Sign } from 'crypto';
 
-const FormSchema = z.object({
-    email: z.string().min(1, 'Email is required').email('Invalid email'),
-    password: z
-        .string()
-        .min(1, 'Password is required')
-        .min(8, 'Password must have than 8 characters'),
-});
+type SignInForm = z.infer<typeof signInSchema>
 
 const SignInForm = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const router = useRouter();
+  const form = useForm<z.infer<typeof signInSchema>>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
 
-  const onSubmit = (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof signInSchema>) => {
+    try {
+      await axios.post('api/user/sign-in', values);
+      router.push('/');
+    } catch (error: any) {
+      console.log("Following error occured: ", error);
+    }
     console.log(values);
   };
 
   return (
-    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-r from-emerald-400 to-cyan-400'>
+    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center h-64 p-1'>
         <div className='w-full h-3/4 flex flex-col space-y-6 justify-center items-center'>

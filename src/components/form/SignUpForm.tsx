@@ -1,5 +1,4 @@
 'use client';
-
 import { useForm } from 'react-hook-form';
 import {
   Form,
@@ -14,23 +13,17 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import axios from "axios";
+import { useRouter } from 'next/navigation';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { FormSchema } from '@/app/validationSchema';
 
-const FormSchema = z
-  .object({
-    username: z.string().min(1, 'Username is required').max(100),
-    email: z.string().min(1, 'Email is required').email('Invalid email'),
-    password: z
-      .string()
-      .min(1, 'Password is required')
-      .min(8, 'Password must have than 8 characters'),
-    confirmPassword: z.string().min(1, 'Password confirmation is required'),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ['confirmPassword'],
-    message: 'Password do not match',
-  });
+type FormSchema = z.infer<typeof FormSchema>
 
 const SignUpForm = () => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -41,12 +34,21 @@ const SignUpForm = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    try {
+      await axios.post('api/user/sign-up', values);
+      toast.success("user created successfully");
+      router.push('/');
+    } catch (error: any) {
+      toast.error("user not created");
+      console.log("Following error occured: ", error);
+    }
+    
     console.log(values);
   };
 
   return (
-    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-r from-emerald-400 to-cyan-400'>
+    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center'>
         <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>

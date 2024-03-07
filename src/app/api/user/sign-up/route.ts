@@ -6,6 +6,7 @@ import { hash } from "bcryptjs";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log(body);
 
     const validation = FormSchema.safeParse(body);
     if (!validation.success) {
@@ -41,6 +42,7 @@ export async function POST(request: NextRequest) {
         email: body.email,
         username: body.username,
         password: hashedPassword,
+        userType: body.userType,
       },
     });
 

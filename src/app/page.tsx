@@ -105,13 +105,13 @@ export default function Home() {
                 <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
                 <div className="flex w-full h-32 space-x-2">
                   <div className="text-xl">Don't have an account, please</div>
-                  <Button onClick={onSignUp} className="text-lg">
+                  <Button onClick={onSignUp} className="text-sm lg:text-lg">
                     Sign Up
                   </Button>
                 </div>
                 <div className="flex w-full h-32 space-x-2">
                   <div className="text-xl">Already have an account?</div>
-                  <Button onClick={onSignIn} className="text-lg">
+                  <Button onClick={onSignIn} className="text-sm lg:text-lg">
                     Sign In
                   </Button>
                 </div>

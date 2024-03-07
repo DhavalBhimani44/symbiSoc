@@ -12,6 +12,7 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { Select,SelectContent,SelectItem,SelectValue,SelectTrigger } from '../ui/select';
 import Link from 'next/link';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
@@ -31,6 +32,7 @@ const SignUpForm = () => {
       email: '',
       password: '',
       confirmPassword: '',
+      userType: 'STUDENT',
     },
   });
 
@@ -53,54 +55,54 @@ const SignUpForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center'>
         <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>
           <div className='flex w-3/4 justify-center items-center'>
-          <FormField
-            control={form.control}
-            name='username'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
-                <FormControl>
-                  <Input className='w-64 shadow-lg' placeholder='johndoe' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name='username'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
+                  <FormControl>
+                    <Input className='w-64 shadow-lg' placeholder='johndoe' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           <div className='flex w-3/4 justify-center items-center'>
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
-                <FormControl>
-                  <Input className='w-64 shadow-lg' placeholder='mail@example.com' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
+                  <FormControl>
+                    <Input className='w-64 shadow-lg' placeholder='mail@example.com' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           <div className='flex w-3/4 justify-center items-center'>
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
-                <FormControl>
-                  <Input
-                    type='password'
-                    className='w-64 shadow-lg'
-                    placeholder='Enter your password'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name='password'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
+                  <FormControl>
+                    <Input
+                      type='password'
+                      className='w-64 shadow-lg'
+                      placeholder='Enter your password'
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           <div className='flex w-3/4 justify-center items-center'>
           <FormField
@@ -121,6 +123,30 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
+          </div>
+          <div className='flex w-3/4 justify-center items-center'>
+            <FormField 
+              control={form.control}
+              name='userType'
+              render={({ field }) => (
+              <FormItem>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
+                  <FormControl>
+                    <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
+                      <SelectTrigger className="w-64 shadow-lg">
+                        <SelectValue placeholder="User type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="STUDENT">Student</SelectItem>
+                        <SelectItem value="FACULTY">Faculty</SelectItem>
+                        <SelectItem value="CLUBINCHARGE">Club Incharge</SelectItem>
+                        <SelectItem value="ADMIN">Admin</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
         </div>
         <div className='flex flex-col w-full justify-center items-center mt-6'>

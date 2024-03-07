@@ -8,6 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/form';
+import { Select,SelectContent,SelectItem,SelectTrigger,SelectValue } from '../ui/select';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
@@ -17,6 +18,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { signInSchema } from '@/app/validationSchema';
 import { Sign } from 'crypto';
+import { NextRequest,NextResponse } from 'next/server';
 
 type SignInForm = z.infer<typeof signInSchema>
 
@@ -27,23 +29,48 @@ const SignInForm = () => {
     defaultValues: {
       email: '',
       password: '',
+      userType: 'STUDENT',
     },
   });
 
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
     try {
-      await axios.post('api/user/sign-in', values);
-      router.push('/');
+      const response = await axios.post('api/user/sign-in', values);
+      
+      const { userId,userType } = response.data.user;
+      console.log("user id: ", userId);
+      console.log("user type: ", userType);
+
+      const redirectUrl = getDashboardRedirectUrl(userType);
+
+      router.push(redirectUrl);
     } catch (error: any) {
       console.log("Following error occured: ", error);
     }
     console.log(values);
   };
 
+  function getDashboardRedirectUrl(userType: string): string {
+    
+    switch (userType) {
+      case "STUDENT":
+        return `/student`;
+      case "FACULTY":
+        return `/faculty`;
+      case "CLUBINCHARGE":
+        return `/incharge`;
+      case "ADMIN":
+        return `/admin`;
+      default:
+        return "/";
+    }
+    
+  };
+
   return (
     <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center h-64 p-1'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center p-1'>
         <div className='w-full h-3/4 flex flex-col space-y-6 justify-center items-center'>
           <div className='flex w-3/4 justify-center items-center'>
             <FormField
@@ -76,6 +103,30 @@ const SignInForm = () => {
                     />
                   </FormControl>
                   <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className='flex w-3/4 justify-center items-center'>
+            <FormField 
+              control={form.control}
+              name='userType'
+              render={({ field }) => (
+              <FormItem>
+                <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
+                  <FormControl>
+                    <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
+                      <SelectTrigger className="w-64 shadow-lg">
+                        <SelectValue placeholder="User type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="STUDENT">Student</SelectItem>
+                        <SelectItem value="FACULTY">Faculty</SelectItem>
+                        <SelectItem value="CLUBINCHARGE">Club Incharge</SelectItem>
+                        <SelectItem value="ADMIN">Admin</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
                 </FormItem>
               )}
             />

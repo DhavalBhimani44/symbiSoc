@@ -54,12 +54,12 @@ export default function Home() {
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#ae5e66] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"/>
             </div>
 
-            <div className="flex lg:flex-row flex-col">
-              <div className="flex flex-col justify-left items-center text-center lg:max-w-3/4">
+            <div className="flex lg:flex-row flex-col justify-center items-center">
+              <div className="flex flex-col justify-center items-center text-center">
                 <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
                   Club's at <span className="text-red-600">SIT</span>
                 </h1>
-                <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl h-32 flex flex-col justify-center items-center">
+                <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl flex flex-col justify-center items-center">
                   <div className="lg:max-w-4xl">
                     <Marquee direction="left">
                       <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
@@ -100,21 +100,6 @@ export default function Home() {
                     </Marquee>
                   </div>
                 </div>                
-              </div>
-              <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
-                <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
-                <div className="flex w-full h-32 space-x-2">
-                  <div className="text-xl font-semibold">Don't have an account, please</div>
-                  <Button onClick={onSignUp} className="text-sm lg:text-lg">
-                    Sign Up
-                  </Button>
-                </div>
-                <div className="flex w-full h-32 space-x-2">
-                  <div className="text-xl font-semibold">Already have an account?</div>
-                  <Button onClick={onSignIn} className="text-sm lg:text-lg">
-                    Sign In
-                  </Button>
-                </div>
               </div>
               
             </div>

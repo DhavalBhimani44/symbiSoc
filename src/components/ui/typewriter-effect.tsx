@@ -35,7 +35,7 @@ export const TypewriterEffect = ({
           opacity: 1,
         },
         {
-          duration: 0.3,
+          duration: 0.1,
           delay: stagger(0.1),
           ease: "easeInOut",
         }
@@ -71,7 +71,7 @@ export const TypewriterEffect = ({
   return (
     <div
       className={cn(
-        "text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center",
+        "text-5xl md:text-7xl lg:text-7xl font-bold text-center",
         className
       )}
     >
@@ -84,7 +84,7 @@ export const TypewriterEffect = ({
           opacity: 1,
         }}
         transition={{
-          duration: 0.8,
+          duration: 0.5,
           repeat: Infinity,
           repeatType: "reverse",
         }}
@@ -151,11 +151,11 @@ export const TypewriterEffectSmooth = ({
         transition={{
           duration: 2,
           ease: "linear",
-          delay: 1,
+          delay: 2,
         }}
       >
         <div
-          className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-5xl font-bold"
+          className="text-5xl md:text-6xl lg:text:7xl xl:text-7xl font-bold mt-6 mb-6"
           style={{
             whiteSpace: "nowrap",
           }}
@@ -171,13 +171,13 @@ export const TypewriterEffectSmooth = ({
           opacity: 1,
         }}
         transition={{
-          duration: 0.8,
+          duration: 0.5,
 
           repeat: Infinity,
           repeatType: "reverse",
         }}
         className={cn(
-          "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-blue-500",
+          "block rounded-sm w-[4px]  h-12 sm:h-12 md:h-16 xl:h-20 bg-red-400 mt-6 mb-6",
           cursorClassName
         )}
       ></motion.span>

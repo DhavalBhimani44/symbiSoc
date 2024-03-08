@@ -14,8 +14,8 @@ export function Heading() {
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center">
+    <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
       <TypewriterEffectSmooth words={words} />
-    </div>
+    </h1>
   );
 }

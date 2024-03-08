@@ -7,7 +7,7 @@ const Mosaic = () => {
   return (
 
         <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+            <CardBody className="bg-gradient-to-r from-slate-200 via-yellow-50 to-slate-200 hover:bg-gradient-to-r hover:from-slate-300 hover:via-yellow-100 hover:to-slate-300 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
                 <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
@@ -19,7 +19,7 @@ const Mosaic = () => {
                     src='/mosaic-logo.jpg'
                     height="1000"
                     width="1000"
-                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    className="h-60 w-full object-contain rounded-xl group-hover/card:shadow-xl"
                     alt="thumbnail"
                 />
                 </CardItem>

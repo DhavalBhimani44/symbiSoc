@@ -107,15 +107,16 @@ export default function Home() {
                       <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
                   </div> */}                                      
-                  <Codex/>                                
-                  <WWR/>                                  
+                  <CBC/>                  
+                  <Codex/>              
                   <GDSC/>                                      
-                  <SpaceAstronomy/>                                        
-                  <Mosaic/>                                                        
-                  <BTP/>                                    
-                  <TPC/>                                    
                   <AI/>                                                                        
+                  <Mosaic/>                                                        
                   <ARVR/>                                    
+                  <WWR/>                                  
+                  <TPC/>                                    
+                  <SpaceAstronomy/>                                        
+                  <BTP/>                                    
                 </div>                
               </div>              
             </div>      

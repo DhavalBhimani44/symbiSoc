@@ -1,12 +1,18 @@
 "use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { buttonVariants } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import Codex from "@/components/CardContainer/Codex";
+import CBC from "@/components/CardContainer/CBC";
+import WWR from "@/components/CardContainer/WWR";
+import GDSC from "@/components/CardContainer/GDSC";
+import SpaceAstronomy from "@/components/CardContainer/SpaceAstronomy";
+import Mosaic from "@/components/CardContainer/Mosaic";
+import BTP from "@/components/CardContainer/BTP";
+import TPC from "@/components/CardContainer/TPC";
+import AI from "@/components/CardContainer/AI";
+import ARVR from "@/components/CardContainer/ARVR";
 
 export default function Home() {
   const router = useRouter();
@@ -60,7 +66,7 @@ export default function Home() {
                   Club's at <span className="text-red-600">SIT</span>
                 </h1>
                 <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl flex flex-col justify-center items-center">
-                  <div className="lg:max-w-4xl">
+                  {/* <div className="lg:max-w-4xl">
                     <Marquee direction="left">
                       <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
@@ -98,7 +104,17 @@ export default function Home() {
                       <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
-                  </div>
+                  </div> */}
+                  <Codex/>
+                  <CBC/>
+                  <WWR/>
+                  <GDSC/>
+                  <SpaceAstronomy/>
+                  <Mosaic/>
+                  <BTP/>
+                  <TPC/>
+                  <AI/>
+                  <ARVR/>
                 </div>                
               </div>
               

@@ -104,13 +104,13 @@ export default function Home() {
               <div className="lg:max-w-1/4 flex flex-col justify-center items-center">
                 <h3 className="lg:text-5xl h-32 font-bold">Login</h3>
                 <div className="flex w-full h-32 space-x-2">
-                  <div className="text-xl">Don't have an account, please</div>
+                  <div className="text-xl font-semibold">Don't have an account, please</div>
                   <Button onClick={onSignUp} className="text-sm lg:text-lg">
                     Sign Up
                   </Button>
                 </div>
                 <div className="flex w-full h-32 space-x-2">
-                  <div className="text-xl">Already have an account?</div>
+                  <div className="text-xl font-semibold">Already have an account?</div>
                   <Button onClick={onSignIn} className="text-sm lg:text-lg">
                     Sign In
                   </Button>

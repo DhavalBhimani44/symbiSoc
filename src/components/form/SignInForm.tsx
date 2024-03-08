@@ -19,10 +19,12 @@ import { useRouter } from 'next/navigation';
 import { signInSchema } from '@/app/validationSchema';
 import { Sign } from 'crypto';
 import { NextRequest,NextResponse } from 'next/server';
+import { useToast } from '../ui/use-toast';
 
 type SignInForm = z.infer<typeof signInSchema>
 
 const SignInForm = () => {
+  const {toast} = useToast();
   const router = useRouter();
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -37,17 +39,21 @@ const SignInForm = () => {
     try {
       const response = await axios.post('api/user/sign-in', values);
       
-      const { userId,userType } = response.data.user;
-      console.log("user id: ", userId);
-      console.log("user type: ", userType);
+      const { userType } = response.data.user;
 
       const redirectUrl = getDashboardRedirectUrl(userType);
-
       router.push(redirectUrl);
+      toast({
+        duration: 2000,
+        description: 'User signed successfully'
+      })
     } catch (error: any) {
+      toast({
+        duration: 2000,
+        description: 'User creation failed'
+      })
       console.log("Following error occured: ", error);
     }
-    console.log(values);
   };
 
   function getDashboardRedirectUrl(userType: string): string {
@@ -80,7 +86,7 @@ const SignInForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-64 shadow-lg' placeholder='mail@example.com' {...field} />
+                    <Input className='w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

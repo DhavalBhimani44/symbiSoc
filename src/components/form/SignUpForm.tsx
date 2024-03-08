@@ -16,13 +16,14 @@ import { Select,SelectContent,SelectItem,SelectValue,SelectTrigger } from '../ui
 import Link from 'next/link';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
-import { toast } from "react-toastify";
+import { useToast } from "@/components/ui/use-toast";
 import 'react-toastify/dist/ReactToastify.css';
 import { FormSchema } from '@/app/validationSchema';
 
 type FormSchema = z.infer<typeof FormSchema>
 
 const SignUpForm = () => {
+  const {toast} = useToast();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -39,10 +40,16 @@ const SignUpForm = () => {
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
       await axios.post('api/user/sign-up', values);
-      toast.success("user created successfully");
-      router.push('/');
+      toast({
+        duration: 2000,
+        description: 'User created successfully'
+      })
+      router.push('/sign-in');
     } catch (error: any) {
-      toast.error("user not created");
+      toast({
+        duration: 2000,
+        description: 'User creation failed'
+      })
       console.log("Following error occured: ", error);
     }
     
@@ -77,7 +84,7 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-64 shadow-lg' placeholder='mail@example.com' {...field} />
+                    <Input className='w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -150,7 +157,10 @@ const SignUpForm = () => {
           </div>
         </div>
         <div className='flex flex-col w-full justify-center items-center mt-6'>
-          <Button className='w-max text-md shadow-inner' type='submit'>
+          <Button 
+            className='w-max text-md shadow-inner' 
+            type='submit'
+          >
             Sign up
           </Button>
         </div>

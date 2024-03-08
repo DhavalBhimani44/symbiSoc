@@ -2,7 +2,6 @@
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Button, buttonVariants } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
@@ -26,8 +25,8 @@ const Navbar = () => {
 
                     <div className="items-center space-x-4">
                         <>
-                        <Button className="w-fit" onClick={onSignUp}>Create Account</Button>
-                        <Button className="w-fit" onClick={onSignIn}>Sign up</Button>
+                        <Button variant={"secondary"} className="w-fit" onClick={onSignIn}>Sign in</Button>
+                        <Button variant={"outline"} className="w-fit" onClick={onSignUp}>Create an account</Button>
                         </>
                     </div>
                 </div>

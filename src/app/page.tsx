@@ -60,12 +60,12 @@ export default function Home() {
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#ae5e66] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"/>
             </div>
 
-            <div className="flex lg:flex-row flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center text-center">
+            <div className="flex lg:flex-row flex-col justify-center items-center w-full">
+              <div className="flex flex-col justify-center items-center text-center w-full">
                 <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
                   Club's at <span className="text-red-600">SIT</span>
                 </h1>
-                <div className="container mx-auto lg:max-w-4xl h-full md:max-w-xl flex flex-col justify-center items-center">
+                <div className="w-full mx-auto h-full flex flex-wrap justify-evenly">
                   {/* <div className="lg:max-w-4xl">
                     <Marquee direction="left">
                       <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
@@ -104,23 +104,19 @@ export default function Home() {
                       <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                       <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
                     </Marquee>
-                  </div> */}
-                  <Codex/>
-                  <CBC/>
-                  <WWR/>
-                  <GDSC/>
-                  <SpaceAstronomy/>
-                  <Mosaic/>
-                  <BTP/>
-                  <TPC/>
-                  <AI/>
-                  <ARVR/>
+                  </div> */}                                      
+                  <Codex/>                                
+                  <WWR/>                                  
+                  <GDSC/>                                      
+                  <SpaceAstronomy/>                                        
+                  <Mosaic/>                                                        
+                  <BTP/>                                    
+                  <TPC/>                                    
+                  <AI/>                                                                        
+                  <ARVR/>                                    
                 </div>                
-              </div>
-              
-            </div>
-
-            
+              </div>              
+            </div>      
           </div>
         </div>
 

@@ -31,7 +31,6 @@ const ARVR = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

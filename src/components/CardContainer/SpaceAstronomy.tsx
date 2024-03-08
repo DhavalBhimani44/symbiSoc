@@ -31,7 +31,6 @@ const SpaceAstronomy = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

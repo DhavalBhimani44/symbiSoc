@@ -31,7 +31,6 @@ const BTP = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

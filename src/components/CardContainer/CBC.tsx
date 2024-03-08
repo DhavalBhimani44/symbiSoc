@@ -31,7 +31,6 @@ const CBC = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

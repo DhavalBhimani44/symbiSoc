@@ -31,7 +31,6 @@ const TPC = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

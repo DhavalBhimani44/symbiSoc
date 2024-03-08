@@ -31,7 +31,6 @@ const WWR = () => {
                 </CardItem>
             </CardBody>
         </CardContainer>
-
   )
 }
 

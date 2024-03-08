@@ -50,7 +50,7 @@ const SignInForm = () => {
     } catch (error: any) {
       toast({
         duration: 2000,
-        description: 'User creation failed'
+        description: 'User sign in failed',
       })
       console.log("Following error occured: ", error);
     }

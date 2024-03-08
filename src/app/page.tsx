@@ -13,6 +13,7 @@ import BTP from "@/components/CardContainer/BTP";
 import TPC from "@/components/CardContainer/TPC";
 import AI from "@/components/CardContainer/AI";
 import ARVR from "@/components/CardContainer/ARVR";
+import { Heading } from "@/components/Heading";
 
 export default function Home() {
   const router = useRouter();
@@ -62,9 +63,10 @@ export default function Home() {
 
             <div className="flex lg:flex-row flex-col justify-center items-center w-full">
               <div className="flex flex-col justify-center items-center text-center w-full">
-                <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
+                {/* <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
                   Club's at <span className="text-red-600">SIT</span>
-                </h1>
+                </h1> */}
+                  <Heading/>
                 <div className="w-full mx-auto h-full flex flex-wrap justify-evenly">
                   {/* <div className="lg:max-w-4xl">
                     <Marquee direction="left">

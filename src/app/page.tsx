@@ -63,9 +63,6 @@ export default function Home() {
 
             <div className="flex lg:flex-row flex-col justify-center items-center w-full">
               <div className="flex flex-col justify-center items-center text-center w-full">
-                {/* <h1 className="mt-6 mb-6 max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-                  Club's at <span className="text-red-600">SIT</span>
-                </h1> */}
                   <Heading/>
                 <div className="w-full mx-auto h-full flex flex-wrap justify-evenly">
                   {/* <div className="lg:max-w-4xl">
@@ -138,8 +135,8 @@ export default function Home() {
             <li className="md:flex-1">
               <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
                 <span className="text-sm font-medium text-violet-600">Step 1</span>
-                <span className="text-xl font-semibold">Login your account</span>
-                <span className="mt-2 text-zinc-700">Login your account using your PRN and password(check your email!).</span>
+                <span className="text-xl font-semibold">Create an account</span>
+                <span className="mt-2 text-zinc-700">Create an account using your college email and password and sign-in.</span>
               </div>
             </li>
             <li className="md:flex-1">

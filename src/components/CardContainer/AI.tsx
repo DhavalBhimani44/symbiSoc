@@ -6,7 +6,7 @@ import Image from "next/image";
 const AI = () => {
   return (
         <CardContainer className="inter-var flex">
-            <CardBody className="bg-gradient-to-r from-blue-100 to-red-100 hover:bg-gradient-to-r hover:from-blue-200 hover:to-red-200 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+            <CardBody className="bg-gradient-to-l from-cyan-100 to-red-100 hover:bg-gradient-to-l hover:from-cyan-200 hover:to-red-200 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
                 <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"

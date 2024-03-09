@@ -45,7 +45,7 @@ const SignInForm = () => {
       router.push(redirectUrl);
       toast({
         duration: 2000,
-        description: 'User signed successfully'
+        description: 'User signed in successfully'
       })
     } catch (error: any) {
       toast({

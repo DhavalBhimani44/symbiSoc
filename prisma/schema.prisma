@@ -10,13 +10,13 @@ datasource db {
 //models
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  username String  @unique
-  password String
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userType userType @default(STUDENT)
+  userType  userType @default(STUDENT)
 }
 
 enum userType {
@@ -24,4 +24,14 @@ enum userType {
   FACULTY
   CLUBINCHARGE
   ADMIN
+}
+
+model createEvent {
+  id                 Int        @id @default(autoincrement())
+  eventName          String
+  eventDescription   String
+  organisingClub     String
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+  deletedAt          DateTime?  @map("deleted_at")
 }

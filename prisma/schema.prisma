@@ -27,11 +27,31 @@ enum userType {
 }
 
 model createEvent {
-  id                 Int        @id @default(autoincrement())
-  eventName          String
-  eventDescription   String
+  id                 Int          @id @default(autoincrement())
+  eventName          String       
+  eventDescription   String       
+  eventDate          DateTime
+  eventTime          DateTime
+  eventVenue         String
+  eventPlatform      String
+  sponsors           String
+  speakerName        String
+  speakerDesignation String
+  speakerDescription String
+  eventType1         eventType1   @default(OFFLINE)
+  eventType2         eventType2   @default(OPENTOALL)
   organisingClub     String
-  createdAt          DateTime   @default(now())
-  updatedAt          DateTime   @updatedAt
-  deletedAt          DateTime?  @map("deleted_at")
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  deletedAt          DateTime?    @map("deleted_at")
+}
+
+enum eventType1 {
+  ONLINE
+  OFFLINE
+}
+
+enum eventType2 {
+  CLUBMEMBERS
+  OPENTOALL
 }

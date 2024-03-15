@@ -7,16 +7,21 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
         console.log(body);
 
-        const validation = eventSchema.safeParse(body);
-        if(!validation.success) {
-            return NextResponse.json(validation.error.errors, {status: 400});
-        }
-
         const newEvent = await db.createEvent.create({
             data: {
                 eventName: body.eventName,
                 eventDescription: body.eventDescription,
                 organisingClub: body.organisingClub,
+                eventDate: body.eventDate,
+                eventTime: body.eventTime,
+                eventVenue: body.eventVenue,
+                eventPlatform: body.eventPlatform,
+                sponsors: body.sponsors,
+                speakerName: body.speakerName,
+                speakerDesignation: body.speakerDesignation,
+                speakerDescription: body.speakerDescription,
+                eventType1: body.eventType1,
+                eventType2: body.eventType2,
             },
         });
 

@@ -74,11 +74,11 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
+    <div className='w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center p-1'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='w-full h-3/4 flex flex-col space-y-6 justify-center items-center'>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
               name='email'
@@ -86,14 +86,14 @@ const SignInForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
               name='password'
@@ -103,7 +103,7 @@ const SignInForm = () => {
                   <FormControl>
                     <Input
                       type='password'
-                      className='w-64 shadow-lg'
+                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
                       placeholder='Enter your password'
                       {...field}
                     />
@@ -113,7 +113,7 @@ const SignInForm = () => {
               )}
             />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full justify-center items-center'>
             <FormField 
               control={form.control}
               name='userType'
@@ -122,7 +122,7 @@ const SignInForm = () => {
                 <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
                   <FormControl>
                     <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
-                      <SelectTrigger className="w-64 shadow-lg">
+                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
                         <SelectValue placeholder="User type" />
                       </SelectTrigger>
                       <SelectContent>

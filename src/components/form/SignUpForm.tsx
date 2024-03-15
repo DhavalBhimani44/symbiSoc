@@ -57,11 +57,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className='lg:w-1/4 md:w-fit sm:w-full m-auto px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
+    <div className='w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
               name='username'
@@ -69,14 +69,14 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
                   <FormControl>
-                    <Input className='w-64 shadow-lg' placeholder='johndoe' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='Username' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
               name='email'
@@ -84,14 +84,14 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
               name='password'
@@ -101,7 +101,7 @@ const SignUpForm = () => {
                   <FormControl>
                     <Input
                       type='password'
-                      className='w-64 shadow-lg'
+                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
                       placeholder='Enter your password'
                       {...field}
                     />
@@ -111,7 +111,7 @@ const SignUpForm = () => {
               )}
             />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
           <FormField
             control={form.control}
             name='confirmPassword'
@@ -121,7 +121,7 @@ const SignUpForm = () => {
                 <FormControl>
                   <Input
                     placeholder='Re-Enter your password'
-                    className='w-64 shadow-lg'
+                    className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
                     type='password'
                     {...field}
                   />
@@ -131,7 +131,7 @@ const SignUpForm = () => {
             )}
           />
           </div>
-          <div className='flex w-3/4 justify-center items-center'>
+          <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField 
               control={form.control}
               name='userType'
@@ -140,7 +140,7 @@ const SignUpForm = () => {
                 <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
                   <FormControl>
                     <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
-                      <SelectTrigger className="w-64 shadow-lg">
+                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
                         <SelectValue placeholder="User type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -158,7 +158,7 @@ const SignUpForm = () => {
         </div>
         <div className='flex flex-col w-full justify-center items-center mt-6'>
           <Button 
-            className='w-max text-md shadow-inner' 
+            className='w-max h-fit text-md shadow-inner' 
             type='submit'
           >
             Sign up

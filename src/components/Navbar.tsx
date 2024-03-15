@@ -23,7 +23,7 @@ const Navbar = () => {
                         <span>symbiSoc.</span>
                     </Link>
 
-                    <div className="items-center space-x-4">
+                    <div className="flex items-center space-x-4">
                         <>
                         <Button variant={"secondary"} className="w-fit" onClick={onSignIn}>Sign in</Button>
                         <Button variant={"outline"} className="w-fit" onClick={onSignUp}>Create an account</Button>

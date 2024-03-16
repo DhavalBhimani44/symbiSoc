@@ -17,7 +17,7 @@ export default function StudentPage() {
     }
 
     return (
-        <>            
+        <>
             <div className="flex flex-col justify-center itmes-center bg-white">
                 <div className='w-full h-full m-auto'>
                     <div className="flex justify-around w-full">
@@ -27,14 +27,14 @@ export default function StudentPage() {
                             </Link>
                         </div>
                         <div className="flex w-1/2 bg-blue-100">
-                            <Link href="/student/registeredEvents" className="w-full hover:border-b-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            <Link href="/student/registeredEvents" className="w-full border-b-4 border-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Registered Events
                             </Link>
                         </div>
                     </div>
 
-                    <div className="flex w-full justify-around">
-                        Student Portal
+                    <div className="flex w-full">
+                        Registered Events
                     </div>
                 </div>
 

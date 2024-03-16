@@ -14,6 +14,7 @@ import TPC from "@/components/CardContainer/TPC";
 import AI from "@/components/CardContainer/AI";
 import ARVR from "@/components/CardContainer/ARVR";
 import { Heading } from "@/components/Heading";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const router = useRouter();

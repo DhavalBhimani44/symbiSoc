@@ -72,51 +72,51 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div className='w-fit lg:w-full xl:w-full m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
+        <div className='w-full lg:w-full xl:w-full m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-around items-center shadow-2xl bg-gradient-to-l from-red-300 to-red-200'>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
-                    <div className="flex flex-col w-full h-3/4 space-y-6 justify-center items-center">
+                <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1 bg-green-100'>
+                    <div className="flex flex-col w-full min-h-fit space-y-6 justify-center items-center">
 
-                        <div className="flex items-center space-x-12">
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                        <div className="flex flex-wrap w-full p-2 justify-around bg-yellow-100">
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-blue-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventName'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Name</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Name*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Event Name" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Event Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-pink-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventDescription'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Description</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Description*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Event Description" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Event Description" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-cyan-100'>
                                 <FormField
                                     control={form.control}
                                     name='organisingClub'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Organising CLub</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Organising CLub*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Club" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Club" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -124,61 +124,61 @@ const CreateEventForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex space-x-12 items-center">
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                        <div className="flex flex-wrap w-full p-2 justify-around bg-yellow-100">
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-blue-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventDate'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Date</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Date*</div></FormLabel>
                                             <FormControl>
-                                                <Input type="date" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input type="date" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-emerald-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventTime'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Time</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Time*</div></FormLabel>
                                             <FormControl>
-                                                <Input type="time" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input type="time" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-cyan-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventVenue'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Venue</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Venue*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Platform" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Event Venue" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-pink-100'>
                                 <FormField
                                     control={form.control}
                                     name='eventPlatform'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Platform" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Platform" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -186,8 +186,8 @@ const CreateEventForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex space-x-12 items-center">
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                        <div className="flex flex-wrap w-full p-2 justify-around bg-yellow-100">
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-blue-100'>
                                 <FormField
                                     control={form.control}
                                     name='sponsors'
@@ -195,44 +195,44 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Sponsors</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Sponsors" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Sponsors" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-violet-100'>
                                 <FormField
                                     control={form.control}
                                     name='speakerName'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Name</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Name*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Name" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-cyan-100'>
                                 <FormField
                                     control={form.control}
                                     name='speakerDesignation'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Desig</div></FormLabel>
+                                            <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Designation*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Designation" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Designation" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
+                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-pink-100'>
                                 <FormField
                                     control={form.control}
                                     name='speakerDescription'
@@ -240,7 +240,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Details</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Details" className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Details" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -248,8 +248,8 @@ const CreateEventForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex space-x-12 items-center">
-                            <div className="flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center">
+                        <div className="flex flex-wrap w-full p-2 justify-around bg-yellow-100">
+                            <div className="flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-sky-100">
                                 <FormField
                                     control={form.control}
                                     name='eventType1'
@@ -258,7 +258,7 @@ const CreateEventForm = () => {
                                             <FormLabel><div className='lg:text-xl sm:text-lg'>Event Type</div></FormLabel>
                                             <FormControl>
                                                 <Select {...field} onValueChange={(selectedValue) => form.setValue('eventType1', selectedValue)}>
-                                                    <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
+                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg">
                                                         <SelectValue placeholder="User type" />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -271,7 +271,7 @@ const CreateEventForm = () => {
                                     )}
                                 />
                             </div>
-                            <div className="flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center">
+                            <div className="flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center bg-blue-100">
                                 <FormField
                                     control={form.control}
                                     name='eventType2'
@@ -280,7 +280,7 @@ const CreateEventForm = () => {
                                             <FormLabel><div className='lg:text-xl sm:text-lg'>Event Type</div></FormLabel>
                                             <FormControl>
                                                 <Select {...field} onValueChange={(selectedValue) => form.setValue('eventType2', selectedValue)}>
-                                                    <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
+                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg">
                                                         <SelectValue placeholder="User type" />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -297,7 +297,7 @@ const CreateEventForm = () => {
                     </div>
                     <div className='flex flex-col w-full justify-center items-center mt-6'>
                         <Button className='w-max h-fit text-md shadow-inner' type='submit'>
-                            Sign up
+                            Submit
                         </Button>
                     </div>
                 </form>

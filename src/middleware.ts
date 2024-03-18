@@ -25,5 +25,8 @@ export const config = {
         '/incharge',
         '/faculty',
         '/admin',
+        '/admin',
+        '/incharge/createEvent',
+        '/incharge/viewEvent',
     ],
 };

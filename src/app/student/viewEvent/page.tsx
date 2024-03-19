@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 
 interface PageProps {
-    userId: string; // Assuming userId is of type string
+    userId: number; 
 }
 
 const Page = ({ userId }: PageProps) => {

@@ -4,11 +4,7 @@ import axios from "axios";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 
-interface PageProps {
-    userId: number; 
-}
-
-const Page = ({ userId }: PageProps) => {
+const Page = () => {
     const [events, setEvents] = useState([]);
     const router = useRouter();
 
@@ -27,16 +23,17 @@ const Page = ({ userId }: PageProps) => {
 
     const handleRegister = async (eventId: number) => {
         try {
+            const uid = await axios.get('/api/user/idfetch');
+            const username = await axios.get('/api/user/idfetch');
+
             // Validate userId
-            if (!userId) {
-                console.error('User ID is not provided.');
+
+            if (!uid || !username) {
+                console.error('User ID or username is not provided.');
                 return;
             }
 
-            const response = await axios.get(`/api/user/${userId}`);
-            const username = response.data.username;
-
-            await axios.post('/api/user/eventregistration', { userId, eventId, username });
+            await axios.post('/api/user/eventregistration', { uid, username, eventId });
             router.push('/student/registeredEvents');
         } catch (error) {
             console.error('Error registering event:', error);

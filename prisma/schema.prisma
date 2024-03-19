@@ -7,16 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//models
+// models
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  userType  userType @default(STUDENT)
+  userId        Int      @id @default(autoincrement())
+  email         String   @unique
+  username      String   @unique
+  password      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  userType      userType @default(STUDENT)
+  registrations EventRegistration[]
 }
 
 enum userType {
@@ -26,8 +27,21 @@ enum userType {
   ADMIN
 }
 
+model EventRegistration {
+  registrationId           Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [userId])
+  userId       Int
+  username     String     @map("username") // Map to the username column in the database
+  event        createEvent @relation(fields: [eventId], references: [eventId])
+  eventId      Int
+  eventName    String     @map("eventName") // Map to the event_name column in the database
+  registration DateTime   @default(now())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
 model createEvent {
-  id                 Int          @id @default(autoincrement())
+  eventId                 Int          @id @default(autoincrement())
   eventName          String       
   eventDescription   String       
   eventDate          DateTime
@@ -42,8 +56,9 @@ model createEvent {
   eventType2         eventType2   @default(OPENTOALL)
   organisingClub     String
   createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
+  updatedAt          DateTime   @updatedAt
   deletedAt          DateTime?    @map("deleted_at")
+  registrations      EventRegistration[]
 }
 
 enum eventType1 {

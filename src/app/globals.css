@@ -66,3 +66,18 @@
 .redshade{
   color: #ae5e66;
 }
+
+.slide-in {
+  animation: slideInAnimation 1s ease-in-out;
+}
+
+@keyframes slideInAnimation {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

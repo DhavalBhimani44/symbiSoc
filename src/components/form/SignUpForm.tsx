@@ -19,12 +19,14 @@ import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast";
 import 'react-toastify/dist/ReactToastify.css';
 import { FormSchema } from '@/app/validationSchema';
+import React, { useState, useEffect } from 'react';
 
 type FormSchema = z.infer<typeof FormSchema>
 
 const SignUpForm = () => {
   const {toast} = useToast();
   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -36,6 +38,10 @@ const SignUpForm = () => {
       userType: 'STUDENT',
     },
   });
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
@@ -57,7 +63,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className='w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl'>
+    <div className={`w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl ${isVisible ? 'slide-in' : ''}`}>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>

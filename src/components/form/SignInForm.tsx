@@ -20,12 +20,14 @@ import { signInSchema } from '@/app/validationSchema';
 import { Sign } from 'crypto';
 import { NextRequest,NextResponse } from 'next/server';
 import { useToast } from '../ui/use-toast';
+import React, { useState, useEffect } from 'react';
 
 type SignInForm = z.infer<typeof signInSchema>
 
 const SignInForm = () => {
   const {toast} = useToast();
   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -34,6 +36,10 @@ const SignInForm = () => {
       userType: 'STUDENT',
     },
   });
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
     try {
@@ -74,7 +80,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl'>
+    <div className={`w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl ${isVisible ? 'slide-in' : ''}`}>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='w-full h-3/4 flex flex-col space-y-6 justify-center items-center'>

@@ -19,12 +19,14 @@ import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
 import { eventSchema } from "@/app/validationSchema";
 import moment from "moment";
+import React, { useState, useEffect } from 'react';
 
 type CreateEventForm = z.infer<typeof eventSchema>;
 
 const CreateEventForm = () => {
     const { toast } = useToast();
     const router = useRouter();
+    const [isVisible, setIsVisible] = useState(false);
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
@@ -43,6 +45,10 @@ const CreateEventForm = () => {
             eventType2: 'OPENTOALL',
         },
     });
+
+    useEffect(() => {
+        setIsVisible(true);
+      }, []);
 
     const onSubmit = async (values: z.infer<typeof eventSchema>) => {
         try {
@@ -72,7 +78,7 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div className='w-full lg:w-full xl:w-full m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-around items-center shadow-2xl' style={{ backgroundImage: 'url("/eventbackground.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+        <div className={`w-full lg:w-full xl:w-full m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-around items-center shadow-2xl ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/eventbackground.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
                     <div className="flex flex-col w-full min-h-fit space-y-6 justify-center items-center">

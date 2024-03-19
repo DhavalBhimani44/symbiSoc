@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
@@ -27,7 +27,16 @@ const Page = ({ userId }: PageProps) => {
 
     const handleRegister = async (eventId: number) => {
         try {
-            await axios.post('/api/user/eventregistration', { userId, eventId });
+            // Validate userId
+            if (!userId) {
+                console.error('User ID is not provided.');
+                return;
+            }
+
+            const response = await axios.get(`/api/user/${userId}`);
+            const username = response.data.username;
+
+            await axios.post('/api/user/eventregistration', { userId, eventId, username });
             router.push('/student/registeredEvents');
         } catch (error) {
             console.error('Error registering event:', error);
@@ -44,7 +53,7 @@ const Page = ({ userId }: PageProps) => {
                         <div>Event Description: {event.eventDescription}</div>
                         <div>Organising Club: {event.organisingClub}</div>
                         {/* Register button */}
-                        <div><button onClick={() => handleRegister(event.id)}>Register</button></div>
+                        <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.id)}>Register</button></div>
                     </li>
                 ))}
             </div>

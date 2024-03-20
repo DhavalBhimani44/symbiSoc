@@ -65,46 +65,7 @@ export default function Home() {
             <div className="flex lg:flex-row flex-col justify-center items-center w-full">
               <div className="flex flex-col justify-center items-center text-center w-full">
                   <Heading/>
-                <div className="w-full mx-auto h-full flex flex-wrap justify-evenly">
-                  {/* <div className="lg:max-w-4xl">
-                    <Marquee direction="left">
-                      <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/wwr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/sym-music-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/brushes-to-pixels-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/gdsc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/tpc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    </Marquee>
-                  </div>
-                  <div className="lg:max-w-3xl">
-                    <Marquee direction="right">
-                      <Image src='/space-astronomy-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>                  
-                      <Image src='/gdsc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/wwr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/sym-music-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    </Marquee>
-                  </div>
-                  <div className="lg:max-w-4xl">
-                    <Marquee direction="left">
-                      <Image src='/codex-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/cbc-logo.png' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/wwr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/gdsc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/space-astronomy-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/mosaic-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/brushes-to-pixels-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/tpc-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ai-club-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                      <Image src='/ar-vr-logo.jpg' width={200} height={100} quality={100} alt='' className="p-3"/>
-                    </Marquee>
-                  </div> */}                                      
+                <div className="w-full mx-auto h-full flex flex-wrap justify-evenly">                                     
                   <CBC/>                  
                   <Codex/>              
                   <GDSC/>                                      

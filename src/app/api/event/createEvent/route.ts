@@ -1,6 +1,5 @@
 import { db } from "@/lib/db";
 import { NextRequest,NextResponse } from "next/server";
-import { eventSchema } from "@/app/validationSchema";
 
 export async function POST(request: NextRequest) {
     try {

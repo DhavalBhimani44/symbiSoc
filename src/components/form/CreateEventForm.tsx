@@ -61,7 +61,7 @@ const CreateEventForm = () => {
                 eventTime: formattedEventTime,
             };
 
-            await axios.post('/api/user/createEvent', formattedValues);
+            await axios.post('/api/event/createEvent', formattedValues);
             toast({
                 duration: 2000,
                 description: 'Event created successfully',

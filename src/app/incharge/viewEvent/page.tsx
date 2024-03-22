@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
+import { Button } from "@/components/ui/button";
 
-const page = () => {
+const Page = () => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await axios.get('/api/user/viewEvents');
+                const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -18,6 +19,16 @@ const page = () => {
 
         fetchEvents();
     }, []);
+
+    const handleDelete = async (eventId: any) => {
+        try {
+            await axios.delete('/api/event/deleteEvents', { data: { eventId } });
+            // Update the events state after successful deletion
+            setEvents(events.filter(event => event.id !== eventId));
+        } catch (error) {
+            console.error('Error deleting event:', error);
+        }
+    };
 
     return (
         <>
@@ -48,10 +59,11 @@ const page = () => {
                             <ul>
                                 <div className="flex flex-col">
                                     {events.map((event) => (
-                                        <li key={event.id}>
+                                        <li key={event}>
                                             <div className="">Event Name: {event.eventName}</div>
                                             <div>Event Description: {event.eventDescription}</div>
-                                            <div>Organising CLub: {event.organisingClub}</div>
+                                            <div>Organising Club: {event.organisingClub}</div>
+                                            <Button onClick={() => handleDelete(event.id)}>Delete</Button>
                                         </li>
                                     ))}
                                 </div>
@@ -64,4 +76,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

@@ -22,13 +22,18 @@ const Page = () => {
 
     const handleDelete = async (eventId: any) => {
         try {
-            await axios.delete('/api/event/deleteEvents', { data: { eventId } });
+            await axios.delete('/api/event/deleteEvents', {
+                data: {
+                    eventId: eventId
+                }
+            });
             // Update the events state after successful deletion
             setEvents(events.filter(event => event.id !== eventId));
         } catch (error) {
             console.error('Error deleting event:', error);
         }
     };
+
 
     return (
         <>
@@ -63,7 +68,11 @@ const Page = () => {
                                             <div className="">Event Name: {event.eventName}</div>
                                             <div>Event Description: {event.eventDescription}</div>
                                             <div>Organising Club: {event.organisingClub}</div>
-                                            <Button onClick={() => handleDelete(event.id)}>Delete</Button>
+                                            <Button onClick={() => {
+                                                handleDelete(event.eventId)
+                                                window.location.reload()
+                                            }}>Delete</Button>
+
                                         </li>
                                     ))}
                                 </div>

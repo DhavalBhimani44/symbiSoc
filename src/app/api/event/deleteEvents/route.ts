@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import db from '@/lib/db';
 
-export default async function DELETE(req: NextRequest) {
+export async function DELETE(req: NextRequest) {
   if (req.method === 'DELETE') {
     try {
       const body = await req.json();
-      // Extract event ID from request body
-      const { eventId } = body;
+      
+      if (!body.eventId) {
+        // If eventId is missing in the request body, return a Bad Request response
+        return NextResponse.json(
+          { message: 'eventId is missing in the request body' },
+          { status: 400 }
+        );
+      }
+
+      const eventId = parseInt(body.eventId);
 
       // Delete the event from the database
       await db.createEvent.delete({
         where: {
-          eventId: parseInt(eventId),
+          eventId: eventId,
         },
       });
 

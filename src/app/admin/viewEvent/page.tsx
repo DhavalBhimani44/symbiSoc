@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
+import { Button } from "@/components/ui/button";
 
 const page = () => {
     const [events, setEvents] = useState([]);
@@ -9,7 +10,7 @@ const page = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await axios.get('/api/user/viewEvents');
+                const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -18,6 +19,20 @@ const page = () => {
 
         fetchEvents();
     }, []);
+
+    const handleDelete = async (eventId: any) => {
+        try {
+            await axios.delete('/api/event/deleteEvents', {
+                data: {
+                    eventId: eventId
+                }
+            });
+            // Update the events state after successful deletion
+            setEvents(events.filter(event => event.id !== eventId));
+        } catch (error) {
+            console.error('Error deleting event:', error);
+        }
+    };
 
     return (
         <>
@@ -39,8 +54,8 @@ const page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full mt-6 bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
-                    <div className="flxe flex-col">
+                <div className='flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
+                    <div className="flxe flex-col mb-2">
                         <div className="flex text-6xl">
                             <h1>Event List</h1>
                         </div>
@@ -52,6 +67,10 @@ const page = () => {
                                             <div className="">Event Name: {event.eventName}</div>
                                             <div>Event Description: {event.eventDescription}</div>
                                             <div>Organising CLub: {event.organisingClub}</div>
+                                            <Button onClick={() => {
+                                                handleDelete(event.eventId)
+                                                window.location.reload()
+                                            }}>Delete</Button>
                                         </li>
                                     ))}
                                 </div>

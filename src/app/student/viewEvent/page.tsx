@@ -11,7 +11,7 @@ const Page = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await axios.get('/api/user/viewEvents');
+                const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -33,7 +33,7 @@ const Page = () => {
                 return;
             }
 
-            await axios.post('/api/user/eventregistration', { uid, username, eventId });
+            await axios.post('/api/event/eventregistration', { uid, username, eventId });
             router.push('/student/registeredEvents');
         } catch (error) {
             console.error('Error registering event:', error);
@@ -42,17 +42,42 @@ const Page = () => {
 
     return (
         <>
-            <div className='flex flex-col'>
-                {events.map((event) => (
-                    <li key={event.id}>
-                        {/* Event details */}
-                        <div>Event Name: {event.eventName}</div>
-                        <div>Event Description: {event.eventDescription}</div>
-                        <div>Organising Club: {event.organisingClub}</div>
-                        {/* Register button */}
-                        <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.id)}>Register</button></div>
-                    </li>
-                ))}
+            <div className="w-full h-full m-auto bg-white">
+                <div className="flex justify-around w-full">
+                    <div className="flex w-1/2 bg-red-100">
+                        <Link href='/student/viewEvent' className="w-full border-b-4 border-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            View Events
+                        </Link>
+                    </div>
+                    <div className="flex w-1/2 bg-blue-100">
+                        <Link href='/student/registeredEvents' className="w-full hover:border-b-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            Registered Events
+                        </Link>
+                    </div>
+                </div>
+                <div className="flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300">
+                    <div className="flex flex-col mb-2">
+                        <div className="flex flex-col text-5xl font-semibold">
+                            <h1>Event List</h1>
+                        </div>
+                        <div className="flex text-4xl">
+                            <ul>
+                                <div className='flex flex-col'>
+                                    {events.map((event) => (
+                                        <li key={event.id}>
+                                            {/* Event details */}
+                                            <div>Event Name: {event.eventName}</div>
+                                            <div>Event Description: {event.eventDescription}</div>
+                                            <div>Organising Club: {event.organisingClub}</div>
+                                            {/* Register button */}
+                                            <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.id)}>Register</button></div>
+                                        </li>
+                                    ))}
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );

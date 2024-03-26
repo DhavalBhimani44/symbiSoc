@@ -4,7 +4,7 @@ import SignUpForm from '@/components/form/SignUpForm';
 const page = () => {
   return (
     <div className='w-full h-full m-auto'>
-      <SignUpForm />
+      <SignUpForm/>
     </div>
   );
 };

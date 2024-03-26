@@ -63,7 +63,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className={`w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl ${isVisible ? 'slide-in' : ''}`}>
+    <div className={`w-fit lg:w-1/4 text-slate-200 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-neutral-900 rounded-lg ${isVisible ? 'slide-in' : ''}`}>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>
@@ -75,7 +75,7 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
                   <FormControl>
-                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='Username' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200' placeholder='Username' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -90,7 +90,7 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -107,7 +107,7 @@ const SignUpForm = () => {
                   <FormControl>
                     <Input
                       type='password'
-                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
+                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200'
                       placeholder='Enter your password'
                       {...field}
                     />
@@ -127,7 +127,7 @@ const SignUpForm = () => {
                 <FormControl>
                   <Input
                     placeholder='Re-Enter your password'
-                    className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
+                    className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200'
                     type='password'
                     {...field}
                   />
@@ -146,7 +146,7 @@ const SignUpForm = () => {
                 <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
                   <FormControl>
                     <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
-                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
+                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black">
                         <SelectValue placeholder="User type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -171,11 +171,11 @@ const SignUpForm = () => {
           </Button>
         </div>
       </form>
-      <div className='mx-auto my-4 flex w-3/4 items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+      <div className='mx-auto my-4 flex w-3/4 items-center text-slate-300 justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
         or
       </div>
       <div className='flex justify-center items-center text-gray-600 my-2 text-sm'>
-        <div>
+        <div className='text-slate-300'>
           Already have an account ?, please&nbsp;
           <Link className='text-blue-500 hover:underline' href='/sign-in'>
             Sign in

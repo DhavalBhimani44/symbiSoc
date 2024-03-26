@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 import { url } from 'inspector';
 import { FC, ReactNode } from 'react';
 
@@ -9,7 +10,12 @@ interface AuthLayoutProps {
 const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
     <>
-      <div className='bg-slate-200 px-10 py-32 rounded-md' style={{ backgroundImage: 'url("/bg1.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>{children}</div>
+      <div className='bg-neutral-950 px-10 py-24 relative antialiased'>
+        <div className='relative z-10'>
+        {children}
+        </div>
+        <BackgroundBeams/>
+      </div>
     </>
   )
 };

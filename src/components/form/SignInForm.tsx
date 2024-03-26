@@ -21,6 +21,7 @@ import { Sign } from 'crypto';
 import { NextRequest,NextResponse } from 'next/server';
 import { useToast } from '../ui/use-toast';
 import React, { useState, useEffect } from 'react';
+import { BackgroundBeams } from '../ui/background-beams';
 
 type SignInForm = z.infer<typeof signInSchema>
 
@@ -80,7 +81,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className={`w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-gradient-to-l from-blue-200 to-teal-300 rounded-xl ${isVisible ? 'slide-in' : ''}`}>
+    <div className={`w-fit lg:w-1/4 xl:w-1/4 m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl z-1 bg-neutral-800 rounded-lg ${isVisible ? 'slide-in' : ''}`}>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
         <div className='w-full h-3/4 flex flex-col space-y-6 justify-center items-center'>
@@ -90,9 +91,9 @@ const SignInForm = () => {
               name='email'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
+                  <FormLabel><div className='lg:text-xl sm:text-lg text-slate-200'>Email</div></FormLabel>
                   <FormControl>
-                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg' placeholder='mail@sitpune.edu.in' {...field} />
+                    <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200' placeholder='mail@sitpune.edu.in' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,11 +106,11 @@ const SignInForm = () => {
               name='password'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
+                  <FormLabel><div className='lg:text-xl sm:text-lg text-slate-200'>Password</div></FormLabel>
                   <FormControl>
                     <Input
                       type='password'
-                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg'
+                      className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 z-100'
                       placeholder='Enter your password'
                       {...field}
                     />
@@ -125,10 +126,10 @@ const SignInForm = () => {
               name='userType'
               render={({ field }) => (
               <FormItem>
-                <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
+                <FormLabel><div className='lg:text-xl sm:text-lg text-slate-200'>User Type</div></FormLabel>
                   <FormControl>
                     <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
-                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg">
+                      <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200">
                         <SelectValue placeholder="User type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -145,15 +146,15 @@ const SignInForm = () => {
           </div>
         </div>
           <div className='flex flex-col w-full justify-center items-center mt-6'>
-            <Button className='w-max text-md shadow-inner' type='submit'>
+            <Button className='w-max text-md shadow-inner bg-gradient-to-r from-fuchsia-600 to-cyan-600 hover:bg-gradient-to-l hover:from-fuchsia-600 hover:to-cyan-600 ease-in' type='submit'>
               Sign in
             </Button>
           </div>
       </form>
-      <div className='mx-auto my-4 flex w-3/4 items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+      <div className='mx-auto my-4 flex w-3/4 text-gray-200 items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
         or
       </div>
-      <div className='flex justify-center items-center text-gray-600 my-2 text-sm'>
+      <div className='flex justify-center items-center text-gray-200 my-2 text-sm'>
         <div>
           If you don&apos;t have an account, please&nbsp;
           <Link className='text-blue-500 hover:underline' href='/sign-up'>

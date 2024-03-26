@@ -4,7 +4,7 @@ import { BackgroundBeams } from '@/components/ui/background-beams';
 
 const page = () => {
   return (
-    <div className="w-full h-full m-auto">
+    <div className="w-full h-full m-auto py-24">
         <SignInForm/>
     </div>
   );

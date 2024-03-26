@@ -4,13 +4,15 @@ export function Heading() {
   const words = [
     {
       text: "Club's",
+      className: "text-slate-300"
     },
     {
       text: "at",
+      className: "text-slate-300"
     },
     {
       text: "SIT.",
-      className: "text-red-600 dark:text-red-600",
+      className: "text-red-500 dark:text-red-500",
     },
   ];
   return (

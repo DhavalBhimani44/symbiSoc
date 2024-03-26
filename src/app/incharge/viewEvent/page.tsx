@@ -55,7 +55,7 @@ const Page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full mt-6 bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
+                <div className='flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
                     <div className="flxe flex-col">
                         <div className="flex text-6xl">
                             <h1>Event List</h1>

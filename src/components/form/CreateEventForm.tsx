@@ -78,10 +78,10 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div className={`w-full lg:w-full xl:w-full m-auto px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-around items-center shadow-2xl ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/eventbackground.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+        <div className={`w-full h-screen lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/eventbackground.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
-                    <div className="flex flex-col w-full min-h-fit space-y-6 justify-center items-center">
+                    <div className="flex flex-col w-full min-h-full space-y-6 justify-center items-center">
                         <div className="flex flex-wrap w-full p-2 justify-around">
                             <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center'>
                                 <FormField

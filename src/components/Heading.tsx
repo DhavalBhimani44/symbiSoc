@@ -3,12 +3,12 @@ import { TypewriterEffectSmooth } from "../components/ui/typewriter-effect";
 export function Heading() {
   const words = [
     {
-      text: "Club's",
-      className: "text-slate-300"
+      text: "Clubs'",
+      className: "text-white-300"
     },
     {
       text: "at",
-      className: "text-slate-300"
+      className: "text-white-300"
     },
     {
       text: "SIT.",

@@ -164,7 +164,7 @@ const SignUpForm = () => {
         </div>
         <div className='flex flex-col w-full justify-center items-center mt-6'>
           <Button 
-            className='w-max h-fit text-md shadow-inner' 
+            className='w-max text-md shadow-inner bg-gradient-to-r from-fuchsia-600 to-cyan-600 hover:bg-gradient-to-l hover:from-fuchsia-600 hover:to-cyan-600 ease-in' 
             type='submit'
           >
             Sign up

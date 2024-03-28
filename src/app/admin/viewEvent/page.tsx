@@ -56,7 +56,7 @@ const page = () => {
                 </div>
                 <div className='flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
                     <div className="flxe flex-col mb-2">
-                        <div className="flex text-6xl">
+                        <div className="flex text-6xl mt-2">
                             <h1>Event List</h1>
                         </div>
                         <div className="flex text-4xl">

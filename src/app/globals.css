@@ -100,3 +100,8 @@
     opacity: 1;
   }
 }
+
+.gradient-container {
+  height: 200px; /* Adjust height as needed */
+  background: linear-gradient(to bottom right, #8a2be2, #0000ff, #00ff00, #ffff00);
+}

@@ -63,10 +63,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className={`w-fit lg:w-1/4 text-slate-200 xl:w-1/4 m-auto px-4 sm:px-4 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-neutral-900 rounded-lg ${isVisible ? 'slide-in' : ''}`}>
+    <div className={`w-fit lg:w-1/4 text-slate-200 xl:w-1/4 m-auto px-4 sm:px-4 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl bg-neutral-800 rounded-lg`}>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
-        <div className='flex flex-col w-full h-3/4 space-y-6 justify-center items-center'>
+        <div className='flex flex-col w-full h-3/4 space-y-2 justify-center items-center'>
           <div className='flex w-full sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 justify-center items-center'>
             <FormField
               control={form.control}
@@ -164,7 +164,7 @@ const SignUpForm = () => {
         </div>
         <div className='flex flex-col w-full justify-center items-center mt-6'>
           <Button 
-            className='w-max text-md shadow-inner bg-gradient-to-r from-fuchsia-600 to-cyan-600 hover:bg-gradient-to-l hover:from-fuchsia-600 hover:to-cyan-600 ease-in' 
+            className='w-max text-md shadow-indigo-500/50 hover:shadow-indigo-500/50 shadow-md hover:shadow-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 hover:bg-gradient-to-tl hover:from-fuchsia-500 hover:to-cyan-500 transition duration-300 ease-in-out'
             type='submit'
           >
             Sign up

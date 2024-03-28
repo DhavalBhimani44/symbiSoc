@@ -23,7 +23,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full bg-black text-slate-300 backdrop-blur-lg transition-all">
+        <nav className="sticky h-14 inset-x-0 top-0 z-40 w-full bg-black text-white backdrop-blur-lg transition-all">
             <MaxWidthWrapper>
                 <div className="h-14 flex items-center justify-between">
                     <Link href="/" className="flex z-40 font-semibold">
@@ -37,8 +37,8 @@ const Navbar = () => {
                         ) : (
                             // Display sign in and sign up buttons if user is not logged in
                             <>
-                                <Button variant={"secondary"} className="w-fit" onClick={onSignIn}>Sign in</Button>
-                                <Button variant={"outline"} className="w-fit" onClick={onSignUp}>Create an account</Button>
+                                <Button variant={"outline"} className="w-fit text-neutral-950 hover:bg-transparent hover:text-white hover:border-white" onClick={onSignIn}>Sign in</Button>
+                                <Button variant={"outline"} className="w-fit bg-transparent text-white" onClick={onSignUp}>Create an account</Button>                                
                             </>
                         )}
                     </div>

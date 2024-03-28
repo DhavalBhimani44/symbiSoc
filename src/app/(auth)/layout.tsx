@@ -11,10 +11,10 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
     <>
       <div className='px-10 relative antialiased'>
-        <div className='relative z-10'>
+        <div className='relative z-10 h-fit'>
         {children}
         </div>
-        <BackgroundBeams/>
+        <BackgroundBeams className='fixed'/>
       </div>
     </>
   )

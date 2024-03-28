@@ -151,7 +151,7 @@ export const TypewriterEffectSmooth = ({
         transition={{
           duration: 2,
           ease: "linear",
-          delay: 2,
+          delay: 1,
         }}
       >
         <div
@@ -171,7 +171,7 @@ export const TypewriterEffectSmooth = ({
           opacity: 1,
         }}
         transition={{
-          duration: 0.5,
+          duration: 1,
 
           repeat: Infinity,
           repeatType: "reverse",

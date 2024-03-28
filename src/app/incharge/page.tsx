@@ -18,9 +18,9 @@ export default function InchargePage() {
 
     return (
         <>
-            <div className="flex flex-col justify-center itmes-center bg-white">
+            <div className="flex flex-col justify-center itmes-center bg-white relative z-100">
                 <div className='w-full h-full m-auto'>
-                    <div className="flex justify-around w-full">
+                    <div className="flex justify-around w-full z-30">
                         <div className="flex w-1/3 bg-red-100">
                             <Link href="/incharge/createEvent" className="w-full hover:border-b-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Create Event
@@ -38,7 +38,7 @@ export default function InchargePage() {
                         </div>
                     </div>
 
-                    <div className="flex w-full justify-around">
+                    <div className="flex w-full h-full justify-around">
                         Club Incharge Portal
                     </div>
                 </div>

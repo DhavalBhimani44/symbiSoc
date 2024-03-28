@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Toaster } from '@/components/ui/toaster'
 import { AuthProvider } from '@/context/authContext'
+import { BackgroundBeams } from '@/components/ui/background-beams'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +32,9 @@ export default function RootLayout({
         <AuthProvider>
           <Navbar/>
           <div className="flex flex-col">
-              <main className="flex-1 min-h-screen">{children}</main>
+              <main className="flex-1">
+                {children}                
+              </main>
               <Footer />
           </div>
           <Toaster/>

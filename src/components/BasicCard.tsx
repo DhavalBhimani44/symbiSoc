@@ -52,10 +52,10 @@ export default function BasicCard() {
 
                 <div>
                   <Typography level="body-sm">
-                    12 March, 2024
+                    {event.eventDate}
                   </Typography>
                   <Typography level="title-lg">
-                    Yosemite National Park
+                    {event.eventName}
                   </Typography>
                   <li key={event}>
                     <div>
@@ -69,16 +69,13 @@ export default function BasicCard() {
                     </div>
                   </li>
                 </div>
-
-
-
               </div>
 
               <CardContent orientation="horizontal">
               <Button
                   variant="solid"
                   size="md"
-                  color="primary"
+                  color="danger"
                   aria-label="Explore Bahamas Islands"
                   onClick={() => {
                     handleDelete(event.eventId)

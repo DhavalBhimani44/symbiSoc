@@ -30,7 +30,7 @@ const Page = () => {
                 }
             });
             // Update the events state after successful deletion
-            setEvents(events.filter(event => event.id !== eventId));
+            setEvents(events.filter(event => event.eventId !== eventId));
         } catch (error) {
             console.error('Error deleting event:', error);
         }

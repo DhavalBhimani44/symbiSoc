@@ -37,7 +37,6 @@ const CreateEventForm = () => {
             eventTime: new Date().toISOString(),
             eventVenue: '',
             eventPlatform: '',
-            sponsors: '',
             speakerName: '',
             speakerDescription: '',
             speakerDesignation: '',
@@ -236,21 +235,6 @@ const CreateEventForm = () => {
                             </div>
                         </div>
                         <div className="flex flex-wrap w-full p-2 justify-around">
-                            <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center'>
-                                <FormField
-                                    control={form.control}
-                                    name='sponsors'
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Sponsors</div></FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Sponsors" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
                             <div className='flex w-fit sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 mt-2 justify-center items-center'>
                                 <FormField
                                     control={form.control}

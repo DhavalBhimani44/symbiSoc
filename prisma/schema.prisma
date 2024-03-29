@@ -48,7 +48,6 @@ model createEvent {
   eventTime          DateTime
   eventVenue         String
   eventPlatform      String
-  sponsors           String
   speakerName        String
   speakerDesignation String
   speakerDescription String

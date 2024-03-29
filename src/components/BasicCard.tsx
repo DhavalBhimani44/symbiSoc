@@ -10,7 +10,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { date } from 'zod';
 
-export default function BasicCard() {
+interface BasicCardProps {
+  userRole: "student" | "incharge";
+}
+
+export default function BasicCard({userRole}: BasicCardProps) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ export default function BasicCard() {
         }
       });
       // Update the events state after successful deletion
-      setEvents(events.filter(event => event.id !== eventId));
+      setEvents(events.filter(event => event.eventId !== eventId));
     } catch (error) {
       console.error('Error deleting event:', error);
     }
@@ -43,8 +47,8 @@ export default function BasicCard() {
     <div className='w-full'>
       <ul>
         <div className='flex flex-wrap justify-around w-full'>
-          {events.map((event) =>
-            <Card sx={{ width: 320 }} className="mx-2 my-4">
+          {events.map((event: any) =>
+            <Card key={event} sx={{ width: 320 }} className="mx-2 my-4">
               <div>
                 <AspectRatio minHeight="120px" maxHeight="200px">
                   <Image width={150} height={150} src="/cbc-logo.png" alt='image' loading='lazy' />
@@ -72,24 +76,26 @@ export default function BasicCard() {
               </div>
 
               <CardContent orientation="horizontal">
-              <Button
-                  variant="solid"
-                  size="md"
-                  color="danger"
-                  aria-label="Explore Bahamas Islands"
-                  onClick={() => {
-                    handleDelete(event.eventId)
-                    window.location.reload()}}
-                  sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                {userRole === "incharge" && (
+                  <Button
+                      variant="solid"
+                      size="md"
+                      color="danger"
+                      aria-label="Delete Event"
+                      onClick={() => {
+                        handleDelete(event.eventId)
+                        window.location.reload()}}
+                      sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
 
-                >
-                  Delete
-                </Button>
+                    >
+                      Delete
+                    </Button>
+                )}
                 <Button
                   variant="solid"
                   size="md"
                   color="primary"
-                  aria-label="Explore Bahamas Islands"
+                  aria-label="Register Event"
                   sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
 
                 >

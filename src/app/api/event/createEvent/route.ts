@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
                 eventTime: body.eventTime,
                 eventVenue: body.eventVenue,
                 eventPlatform: body.eventPlatform,
-                sponsors: body.sponsors,
                 speakerName: body.speakerName,
                 speakerDesignation: body.speakerDesignation,
                 speakerDescription: body.speakerDescription,

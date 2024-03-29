@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
+import BasicCard from "@/components/BasicCard";
 
 const Page = () => {
     const [events, setEvents] = useState([]);
@@ -61,20 +62,7 @@ const Page = () => {
                             <h1>Event List</h1>
                         </div>
                         <div className="flex text-4xl">
-                            <ul>
-                                <div className='flex flex-col'>
-                                    {events.map((event) => (
-                                        <li key={event.eventId}>
-                                            {/* Event details */}
-                                            <div>Event Name: {event.eventName}</div>
-                                            <div>Event Description: {event.eventDescription}</div>
-                                            <div>Organising Club: {event.organisingClub}</div>
-                                            {/* Register button */}
-                                            <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.eventId)}>Register</button></div>
-                                        </li>
-                                    ))}
-                                </div>
-                            </ul>
+                            <BasicCard userRole="student"/>
                         </div>
                     </div>
                 </div>

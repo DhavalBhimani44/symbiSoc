@@ -22,21 +22,6 @@ const Page = () => {
         fetchEvents();
     }, []);
 
-    const handleDelete = async (eventId: any) => {
-        try {
-            await axios.delete('/api/event/deleteEvents', {
-                data: {
-                    eventId: eventId
-                }
-            });
-            // Update the events state after successful deletion
-            setEvents(events.filter(event => event.eventId !== eventId));
-        } catch (error) {
-            console.error('Error deleting event:', error);
-        }
-    };
-
-
     return (
         <>
             <div className='w-full h-full m-auto bg-white'>
@@ -63,7 +48,7 @@ const Page = () => {
                             <h1>Event List</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            <BasicCard />
+                            <BasicCard userRole="incharge"/>
                         </div>
                     </div>
                 </div>

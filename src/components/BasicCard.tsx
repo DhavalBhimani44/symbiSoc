@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { date } from 'zod';
+import { useRouter } from 'next/navigation';
 
 interface BasicCardProps {
   userRole: "student" | "incharge";
@@ -16,6 +17,7 @@ interface BasicCardProps {
 
 export default function BasicCard({userRole}: BasicCardProps) {
   const [events, setEvents] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -43,6 +45,20 @@ export default function BasicCard({userRole}: BasicCardProps) {
     }
   };
 
+  const handleRegister = async (eventId: any) => {
+    try {
+      // Perform registration
+      await axios.post('/api/event/registerEvent', {
+        eventId: eventId
+      });
+      
+      // Redirect to the registered events page
+      router.push('/student/registeredEvents')
+    } catch (error) {
+      console.error('Error registering for event:', error);
+    }
+  };
+
   return (
     <div className='w-full'>
       <ul>
@@ -55,9 +71,9 @@ export default function BasicCard({userRole}: BasicCardProps) {
                 </AspectRatio>
 
                 <div>
-                  <Typography level="body-sm">
+                  {/* <Typography level="body-sm">
                     {event.eventDate}
-                  </Typography>
+                  </Typography> */}
                   <Typography level="title-lg">
                     {event.eventName}
                   </Typography>
@@ -97,6 +113,7 @@ export default function BasicCard({userRole}: BasicCardProps) {
                   color="primary"
                   aria-label="Register Event"
                   sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                  onClick={() => handleRegister(event.eventId)}
 
                 >
                   Register

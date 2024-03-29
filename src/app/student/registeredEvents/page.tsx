@@ -33,14 +33,11 @@ export default function StudentPage() {
                         </div>
                     </div>
 
-                    <div className="flex w-full">
+                    <div className="flex w-full h-screen">
                         Registered Events
                     </div>
                 </div>
 
-                <Button onClick={logout}>
-                    Sign out
-                </Button>
             </div>
         </>
     )

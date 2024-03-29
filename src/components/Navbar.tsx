@@ -1,25 +1,19 @@
 "use client";
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import { Button, buttonVariants } from "./ui/button";
-import { useAuth } from "@/context/authContext";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/authContext";
 
 const Navbar = () => {
-    const { user, logout } = useAuth();
-    const router = useRouter();
-
+    const router = useRouter();  
+    
     const onSignIn = () => {
         router.push('/sign-in');
     };
 
     const onSignUp = () => {
         router.push('/sign-up');
-    };
-
-    const handleLogout = () => {
-        logout();
-        router.push('/sign-out');
     };
 
     return (
@@ -30,15 +24,11 @@ const Navbar = () => {
                         <span>symbiSoc.</span>
                     </Link>
 
-                    <div className="flex items-center space-x-4">
-                        {user ? (                            
-                            <Button variant={"outline"} className="w-fit" onClick={handleLogout}>Logout</Button>
-                        ) : (                            
-                            <>
-                                <Button variant={"outline"} className="w-fit text-neutral-950 hover:bg-transparent transition duration-500 ease-out hover:text-white hover:border-white" onClick={onSignIn}>Sign in</Button>
-                                <Button variant={"outline"} className="w-fit bg-neutral-950 text-white transition duration-500 ease-out hover:text-neutral-950 hover:bg-white" onClick={onSignUp}>Create an account</Button>                                
-                            </>
-                        )}
+                    <div className="flex items-center space-x-4">     
+                        <>
+                            <Button variant={"outline"} className="w-fit text-neutral-950 hover:bg-transparent transition duration-500 ease-out hover:text-white hover:border-white" onClick={onSignIn}>Sign in</Button>
+                            <Button variant={"outline"} className="w-fit bg-neutral-950 text-white transition duration-500 ease-out hover:text-neutral-950 hover:bg-white" onClick={onSignUp}>Create an account</Button>                                
+                        </>                     
                     </div>
                 </div>
             </MaxWidthWrapper>

@@ -1,64 +1,73 @@
-"use client";
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import {jwtDecode} from 'jwt-decode';
-
-interface User {
-  id: string;
-  email: string;
-  userType: string;
-}
+"use client"
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 interface AuthContextType {
-  user: User | null;
-  login: (userData: User) => void;
+  isLoggedIn: boolean;
+  login: () => void;
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType>({
+  isLoggedIn: false,
+  login: () => {},
+  logout: () => {},
+});
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+interface AuthProviderProps {
+  children: React.ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Check if token exists in localStorage when component mounts
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decoded: any = jwtDecode(token);
-      setUser(decoded);
-    }
-  }, []);
+    // Check authentication status when component mounts
+    checkAuthentication();
 
-  const login = (userData: User) => {
-    setUser(userData);
-    localStorage.setItem('token', userData.token); // Store token in localStorage
-    router.push('/'); // Redirect to home page after login
+    // Check authentication status on route changes
+    const handleRouteChange = () => {
+      checkAuthentication();
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  });
+
+  const checkAuthentication = () => {
+    const token = getCookie('token');
+    setIsLoggedIn(!!token); // Update isLoggedIn state based on token existence
+  };
+
+  const getCookie = (name: string) => {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.split('=');
+      if (cookieName.trim() === name) {
+        return cookieValue;
+      }
+    }
+    return null;
+  };
+
+  const login = () => {
+    router.push('/login');
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('token'); // Remove token from localStorage
-    router.push('/sign-in'); // Redirect to sign-in page after logout
-  };
-
-  const value = {
-    user,
-    login,
-    logout,
+    router.push('/logout');
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+// Custom hook to use AuthContext
+export const useAuth = (): AuthContextType => useContext(AuthContext);

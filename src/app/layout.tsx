@@ -5,8 +5,6 @@ import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Toaster } from '@/components/ui/toaster'
-import { AuthProvider } from '@/context/authContext'
-import { BackgroundBeams } from '@/components/ui/background-beams'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,16 +27,14 @@ export default function RootLayout({
         'min-h-screen font-sans antialiased grainy', 
         inter.className
       )}>
-        <AuthProvider>
-          <Navbar/>
-          <div className="flex flex-col">
-              <main className="flex-1">
-                {children}                
-              </main>
-              <Footer />
-          </div>
-          <Toaster/>
-        </AuthProvider>
+        <Navbar/>
+        <div className="flex flex-col">
+            <main className="flex-1">
+              {children}                
+            </main>
+            <Footer />
+        </div>
+        <Toaster/>
       </body>
     </html>
   )

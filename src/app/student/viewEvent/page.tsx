@@ -56,12 +56,12 @@ const Page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300">
-                    <div className="flex flex-col mb-2">
-                        <div className="flex flex-col text-5xl font-semibold">
+                <div className='flex flex-col items-center h-screen w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+                    <div className="flxe flex-col w-full">
+                        <div className="flex text-6xl w-full justify-center items-center text-white">
                             <h1>Event List</h1>
                         </div>
-                        <div className="flex text-4xl">
+                        <div className="flex text-4xl w-full">
                             <BasicCard userRole="student"/>
                         </div>
                     </div>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import Card from "@mui/joy/Card";
+import BasicCard from "@/components/BasicCard";
 
 const Page = () => {
     const [events, setEvents] = useState([]);
@@ -59,6 +61,9 @@ const Page = () => {
                     <div className="flxe flex-col">
                         <div className="flex text-6xl mt-2">
                             <h1>Event List</h1>
+                        </div>
+                        <div>
+                            <BasicCard/>
                         </div>
                         <div className="flex text-4xl">
                             <ul>

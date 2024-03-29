@@ -64,13 +64,13 @@ const Page = () => {
                             <ul>
                                 <div className='flex flex-col'>
                                     {events.map((event) => (
-                                        <li key={event.id}>
+                                        <li key={event.eventId}>
                                             {/* Event details */}
                                             <div>Event Name: {event.eventName}</div>
                                             <div>Event Description: {event.eventDescription}</div>
                                             <div>Organising Club: {event.organisingClub}</div>
                                             {/* Register button */}
-                                            <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.id)}>Register</button></div>
+                                            <div><button className="font-bold hover:underline" onClick={() => handleRegister(event.eventId)}>Register</button></div>
                                         </li>
                                     ))}
                                 </div>

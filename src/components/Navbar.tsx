@@ -31,14 +31,12 @@ const Navbar = () => {
                     </Link>
 
                     <div className="flex items-center space-x-4">
-                        {user ? (
-                            // Display logout button if user is logged in
+                        {user ? (                            
                             <Button variant={"outline"} className="w-fit" onClick={handleLogout}>Logout</Button>
-                        ) : (
-                            // Display sign in and sign up buttons if user is not logged in
+                        ) : (                            
                             <>
                                 <Button variant={"outline"} className="w-fit text-neutral-950 hover:bg-transparent transition duration-500 ease-out hover:text-white hover:border-white" onClick={onSignIn}>Sign in</Button>
-                                <Button variant={"secondary"} className="w-fit bg-neutral-950 text-white transition duration-500 ease-out hover:text-neutral-950 hover:bg-white" onClick={onSignUp}>Create an account</Button>                                
+                                <Button variant={"outline"} className="w-fit bg-neutral-950 text-white transition duration-500 ease-out hover:text-neutral-950 hover:bg-white" onClick={onSignUp}>Create an account</Button>                                
                             </>
                         )}
                     </div>

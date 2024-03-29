@@ -57,31 +57,13 @@ const Page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
-                    <div className="flxe flex-col">
-                        <div className="flex text-6xl mt-2">
+                <div className='flex flex-col items-center h-screen w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+                    <div className="flxe flex-col w-full">
+                        <div className="flex text-6xl w-full justify-center items-center text-white">
                             <h1>Event List</h1>
                         </div>
-                        <div>
-                            <BasicCard/>
-                        </div>
-                        <div className="flex text-4xl">
-                            <ul>
-                                <div className="flex flex-col">
-                                    {events.map((event) => (
-                                        <li key={event}>
-                                            <div className="">Event Name: {event.eventName}</div>
-                                            <div>Event Description: {event.eventDescription}</div>
-                                            <div>Organising Club: {event.organisingClub}</div>
-                                            <Button onClick={() => {
-                                                handleDelete(event.eventId)
-                                                window.location.reload()
-                                            }}>Delete</Button>
-
-                                        </li>
-                                    ))}
-                                </div>
-                            </ul>
+                        <div className="flex text-4xl w-full">
+                            <BasicCard />
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ const Page = () => {
                 <div className='flex flex-col items-center h-screen w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300 bg-fixed' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
                     <div className="flxe flex-col w-full">
                         <div className="flex text-6xl w-full justify-center items-center text-white my-2">
-                            <h1>Event List</h1>
+                            <h1>Upcoming Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
                             <BasicCard userRole="incharge"/>

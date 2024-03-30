@@ -47,7 +47,7 @@ const CreateEventForm = () => {
 
     useEffect(() => {
         setIsVisible(true);
-      }, []);
+    }, []);
 
     const onSubmit = async (values: z.infer<typeof eventSchema>) => {
         try {
@@ -77,7 +77,7 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div className={`w-full h-screen lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-start items-center shadow-2xl text-gray-200 ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+        <div className={`w-full h-screen lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-start items-center shadow-2xl text-gray-200 ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
                     <div className="flex flex-col w-full min-h-full space-y-2 justify-center items-center">
@@ -118,11 +118,26 @@ const CreateEventForm = () => {
                                     name='organisingClub'
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel><div className="lg:text-xl sm:text-lg">Organising CLub*</div></FormLabel>
+                                            <FormLabel><div className='lg:text-xl sm:text-lg'>Organising CLub</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Club" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
+                                                <Select {...field} onValueChange={(selectedValue) => form.setValue('organisingClub', selectedValue)}>
+                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black">
+                                                        <SelectValue placeholder="Club Name"/>
+                                                    </SelectTrigger>
+                                                    <SelectContent>                           
+                                                        <SelectItem value="SELECT">Select</SelectItem>                                                                           
+                                                        <SelectItem value="CODEX">Codex</SelectItem>
+                                                        <SelectItem value="GDSC">GDSC</SelectItem>
+                                                        <SelectItem value="CBC">Cyber Blockchain Club</SelectItem>
+                                                        <SelectItem value="ARVR">AR/VR</SelectItem>
+                                                        <SelectItem value="AI">AI</SelectItem>
+                                                        <SelectItem value="MOSAIC">Mosaic</SelectItem>
+                                                        <SelectItem value="WWR">Wrench Welders Racing</SelectItem>
+                                                        <SelectItem value="TPC">The Photography Club</SelectItem>
+                                                        <SelectItem value="SPACEASTRONOMY">Space Astronomy Club</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
                                             </FormControl>
-                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
@@ -280,7 +295,7 @@ const CreateEventForm = () => {
                                     )}
                                 />
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div className='flex flex-col w-full justify-center items-center mt-4'>
                         <Button className='w-max h-fit text-md shadow-inner' type='submit'>

@@ -53,11 +53,24 @@ model createEvent {
   speakerDescription String
   eventType1         eventType1   @default(OFFLINE)
   eventType2         eventType2   @default(OPENTOALL)
-  organisingClub     String
+  organisingClub     organisingClub  @default(SELECT)
   createdAt          DateTime     @default(now())
   updatedAt          DateTime   @updatedAt
   deletedAt          DateTime?    @map("deleted_at")
   registrations      EventRegistration[]
+}
+
+enum organisingClub {
+  SELECT
+  CODEX
+  GDSC
+  CBC
+  ARVR
+  AI
+  MOSAIC
+  WWR
+  TPC
+  SPACEASTRONOMY
 }
 
 enum eventType1 {

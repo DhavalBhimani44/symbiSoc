@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import BasicCard from "@/components/BasicCard";
 
 const page = () => {
     const [events, setEvents] = useState([]);
@@ -54,30 +55,16 @@ const page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300'>
-                    <div className="flxe flex-col mb-2">
-                        <div className="flex text-6xl mt-2">
-                            <h1>Event List</h1>
+                <div className='flex flex-col h-screen items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
+                    <div className="flxe flex-col w-full">
+                        <div className="flex text-6xl w-full justify-center items-center text-white my-2">
+                            <h1>Upcoming Events</h1>
                         </div>
-                        <div className="flex text-4xl">
-                            <ul>
-                                <div className="flex flex-col">
-                                    {events.map((event) => (
-                                        <li key={event.id}>
-                                            <div className="">Event Name: {event.eventName}</div>
-                                            <div>Event Description: {event.eventDescription}</div>
-                                            <div>Organising CLub: {event.organisingClub}</div>
-                                            <Button onClick={() => {
-                                                handleDelete(event.eventId)
-                                                window.location.reload()
-                                            }}>Delete</Button>
-                                        </li>
-                                    ))}
-                                </div>
-                            </ul>
+                        <div className="flex text-4xl w-full">
+                            <BasicCard userRole="incharge" />
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </>
     );

@@ -77,7 +77,7 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div className={`w-full h-3/4 lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-center items-center shadow-2xl text-gray-200 ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
+        <div className={`w-full h-screen lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-start items-center shadow-2xl text-gray-200 ${isVisible ? 'slide-in' : ''}`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition:'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100'} }>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
                     <div className="flex flex-col w-full min-h-full space-y-2 justify-center items-center">
@@ -90,7 +90,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Name*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Event Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Event Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -105,7 +105,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Description*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Event Description" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Event Description" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -120,7 +120,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Organising CLub*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Club" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Club" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -137,7 +137,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Date*</div></FormLabel>
                                             <FormControl>
-                                                <Input type="date" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input type="date" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -152,7 +152,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Time*</div></FormLabel>
                                             <FormControl>
-                                                <Input type="time" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input type="time" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -167,7 +167,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Venue*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Event Venue" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Event Venue" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -182,7 +182,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Platform" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Platform" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -198,7 +198,7 @@ const CreateEventForm = () => {
                                             <FormLabel><div className='lg:text-xl sm:text-lg'>Event Conduction Mode</div></FormLabel>
                                             <FormControl>
                                                 <Select {...field} onValueChange={(selectedValue) => form.setValue('eventType1', selectedValue)}>
-                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg">
+                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black">
                                                         <SelectValue placeholder="User type" />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -220,7 +220,7 @@ const CreateEventForm = () => {
                                             <FormLabel><div className='lg:text-xl sm:text-lg'>Event Type</div></FormLabel>
                                             <FormControl>
                                                 <Select {...field} onValueChange={(selectedValue) => form.setValue('eventType2', selectedValue)}>
-                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg">
+                                                    <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black">
                                                         <SelectValue placeholder="User type" />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -243,7 +243,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Name*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Name" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -258,7 +258,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Designation*</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Designation" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Designation" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -273,7 +273,7 @@ const CreateEventForm = () => {
                                         <FormItem>
                                             <FormLabel><div className="lg:text-xl sm:text-lg">Speaker Details</div></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Speaker Details" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg" {...field} />
+                                                <Input placeholder="Speaker Details" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -282,7 +282,7 @@ const CreateEventForm = () => {
                             </div>
                         </div>                        
                     </div>
-                    <div className='flex flex-col w-full justify-center items-center mt-4 mb-6 lg:mb-10 xl:mb-12'>
+                    <div className='flex flex-col w-full justify-center items-center mt-4'>
                         <Button className='w-max h-fit text-md shadow-inner' type='submit'>
                             Submit
                         </Button>

@@ -60,7 +60,7 @@ export default function BasicCard({userRole}: BasicCardProps) {
   };
 
   return (
-    <div className='w-full'>
+    <div className='w-full my-6'>
       <ul>
         <div className='flex flex-wrap justify-around w-full'>
           {events.map((event: any) =>

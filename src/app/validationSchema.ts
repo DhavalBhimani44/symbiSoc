@@ -83,10 +83,6 @@ export const eventSchema = z.object({
         .string()
         .min(1, 'Event Platform required'),
 
-    sponsors: z
-        .string()
-        .optional(),
-
     speakerName: z
         .string()
         .min(1, 'Speaker Name required'),

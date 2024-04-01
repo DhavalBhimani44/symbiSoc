@@ -92,7 +92,7 @@ const SignInForm = () => {
                   <FormItem>
                     <FormLabel><div className='lg:text-xl sm:text-lg text-slate-200'>Email</div></FormLabel>
                     <FormControl>
-                      <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200' placeholder='mail@sitpune.edu.in' {...field} />
+                      <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='mail@sitpune.edu.in' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,7 +109,7 @@ const SignInForm = () => {
                     <FormControl>
                       <Input
                         type='password'
-                        className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 z-100'
+                        className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 z-100 text-black'
                         placeholder='Enter your password'
                         {...field}
                       />

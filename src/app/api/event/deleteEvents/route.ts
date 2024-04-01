@@ -6,8 +6,7 @@ export async function DELETE(req: NextRequest) {
     try {
       const body = await req.json();
       
-      if (!body.eventId) {
-        // If eventId is missing in the request body, return a Bad Request response
+      if (!body.eventId) {        
         return NextResponse.json(
           { message: 'eventId is missing in the request body' },
           { status: 400 }
@@ -15,8 +14,7 @@ export async function DELETE(req: NextRequest) {
       }
 
       const eventId = parseInt(body.eventId);
-
-      // Delete the event from the database
+      
       await db.createEvent.delete({
         where: {
           eventId: eventId,

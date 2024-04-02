@@ -23,7 +23,7 @@ const UsersTab = () => {
         fetchUsers();
     }, []);
 
-    const handleEdit = (user) => {
+    const handleEdit = (user:any) => {
         setFormData({
             userId: user.userId,
             username: user.username,
@@ -32,7 +32,7 @@ const UsersTab = () => {
         });
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,

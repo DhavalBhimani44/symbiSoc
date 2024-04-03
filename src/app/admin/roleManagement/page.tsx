@@ -43,7 +43,6 @@ export default function InchargePage() {
                     <div className={`w-full h-screen lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 flex flex-col justify-start items-center shadow-2xl text-gray-200`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
                         User Role Management
                         <div className="flex flex-col w-full">
-                            <div className="flex w-full my-2"><EditTab /></div>
                             <div className="flex w-full my-2"><UsersTab /></div>
                         </div>
                     </div>

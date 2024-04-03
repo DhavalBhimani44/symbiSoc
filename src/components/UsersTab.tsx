@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "./ui/button";
@@ -18,6 +17,8 @@ const UsersTab = () => {
     email: "",
     userType: ""
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -59,9 +60,26 @@ const UsersTab = () => {
     }
   }
 
+  const handleSearch = () => {
+    const result = users.filter(user =>
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResult(result);
+  }
+
   return (
     <>
       <div className="w-full h-full">
+        <div className="flex justify-between mb-4">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by email"
+            className="w-64 h-8 px-2"
+          />
+          <Button onClick={handleSearch}>Search</Button>
+        </div>
         <Table>
           <TableBody>
             <TableRow>
@@ -121,7 +139,16 @@ const UsersTab = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((user) => (
+            {searchResult.length > 0 ? searchResult.map((user) => (
+              <TableRow key={user.userId}>
+                <TableCell>{user.username}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.userType}</TableCell>
+                <TableCell>
+                  <Button onClick={() => handleEdit(user)}>Edit</Button>
+                </TableCell>
+              </TableRow>
+            )) : users.map((user) => (
               <TableRow key={user.userId}>
                 <TableCell>{user.username}</TableCell>
                 <TableCell>{user.email}</TableCell>

@@ -45,7 +45,7 @@ export default function BasicCard({userRole}: BasicCardProps) {
     }
   };
 
-  const handleRegister = async (eventId: any) => {
+  const handleRegister = async (eventId: number) => {
     try {
       // Perform registration
       await axios.post('/api/event/registerEvent', {

@@ -1,19 +1,17 @@
 import { db } from "@/lib/db";
+import { verifyToken } from "@/lib/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
 
-        const userData = await db.user.findFirst({
-            where:{
-                userId: body.userId,
-            }
-        })
-        const userId = userData?.userId;
-        console.log(userId)
-        const username = userData?.username
-        console.log(username)
+        const userData = await verifyToken(request);
+        const userId = userData.userId;
+        
+        console.log("user id: ",userId);
+        const username = userData?.username;
+        console.log("user name: ",username);
 
         const eventData = await db.createEvent.findUnique({
             where: {
@@ -21,7 +19,7 @@ export async function POST(request: NextRequest) {
             }
         });
         const eventId = eventData?.eventId
-        console.log(eventId)
+        console.log("event data",eventId)
         const eventName = eventData?.eventName
         console.log(eventName)
 

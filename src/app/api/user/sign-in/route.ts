@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
         }
 
         const tokenData = {
-            // id: existingUser._id,
+            userId: existingUser.userId,
             username: existingUser.username,
             email: existingUser.email,
             userType: existingUser.userType,
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         const response = NextResponse.json({
             message: 'Sign-in successful',
             user: {
-                // id: existingUser._id,
+                userId: existingUser.userId,
                 username: existingUser.username,
                 email: existingUser.email,
                 userType: existingUser.userType,

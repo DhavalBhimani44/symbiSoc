@@ -14,6 +14,29 @@ export async function DELETE(req: NextRequest) {
       }
 
       const userId = parseInt(body.userId);
+
+      const registrationData = await db.eventRegistration.findMany({
+        where: {
+          userId: userId,
+        }
+      });
+
+      if (registrationData.length === 0) {
+        return NextResponse.json(
+          { message: 'No registrations found for the given eventId' },
+          { status: 404 }
+        );
+      }
+
+      for (const registration of registrationData) {
+        console.log('registration id: ', registration.registrationId);
+
+        await db.eventRegistration.delete({
+          where: {
+            registrationId: registration.registrationId,
+          },
+        });
+      }
       
       await db.User.delete({
         where: {

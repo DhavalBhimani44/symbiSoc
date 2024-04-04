@@ -27,9 +27,24 @@ import 'react-toastify/dist/ReactToastify.css';
 
 type FormSchema = z.infer<typeof FormSchema>
 
+interface User {
+  userId: string;
+  username: string;
+  email: string;
+  userType: string;
+}
+
+interface ChangeEvent {
+  target: {
+    name: string;
+    value: string;
+  };
+}
+
+
 const UsersTab = () => {
   const { toast } = useToast();
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [formData, setFormData] = useState({
     userId: "",
     username: "",
@@ -37,7 +52,7 @@ const UsersTab = () => {
     userType: ""
   });
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState<User[]>([]);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -63,7 +78,7 @@ const UsersTab = () => {
     fetchUsers();
   }, []);
 
-  const handleEdit = (user) => {
+  const handleEdit = (user: User) => {
     setFormData({
       userId: user.userId,
       username: user.username,
@@ -72,7 +87,7 @@ const UsersTab = () => {
     });
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -86,7 +101,7 @@ const UsersTab = () => {
       const updatedUser = response.data.data;
       setUsers(users.map(user => user.userId === updatedUser.userId ? updatedUser : user));
       setFormData({
-        userId: null,
+        userId: "",
         username: "",
         email: "",
         userType: "",
@@ -96,9 +111,9 @@ const UsersTab = () => {
     }
   }
 
-  const handleDelete = async (user) => {
+  const handleDelete = async (user:User) => {
     try {
-      const userId = await user.userId;
+      const userId = user.userId;
       console.log("user id: ", userId);
       await axios.delete('/api/user/deleteUser', {
         data: {
@@ -331,7 +346,7 @@ const UsersTab = () => {
                 <TableCell>User Type</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
-              {searchResult.length > 0 ? searchResult.map((user) => (
+              {searchResult.length > 0 ? searchResult.map((user:User) => (
                 <TableRow key={user.userId}>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
@@ -340,7 +355,7 @@ const UsersTab = () => {
                     <Button onClick={() => handleEdit(user)}>Edit</Button>
                   </TableCell>
                 </TableRow>
-              )) : users.map((user) => (
+              )) : users.map((user: User) => (
                 <TableRow key={user.userId}>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>

@@ -52,7 +52,11 @@ export default function BasicCard({userRole}: BasicCardProps) {
       });
       
       // Redirect to the registered events page
-      router.push('/student/registeredEvents')
+      if(userRole === 'incharge') {
+      router.push('/incharge/registeredEvents')
+      } else {
+        router.push('/student/registeredEvents')
+      }
     } catch (error) {
       console.error('Error registering for event:', error);
     }

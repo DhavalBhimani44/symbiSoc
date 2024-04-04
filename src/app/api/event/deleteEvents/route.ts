@@ -21,27 +21,30 @@ export async function DELETE(req: NextRequest) {
       });
 
       if (registrationData.length === 0) {
-        return NextResponse.json(
-          { message: 'No registrations found for the given eventId' },
-          { status: 404 }
-        );
-      }
-
-      for (const registration of registrationData) {
-        console.log('registration id: ', registration.registrationId);
-
-        await db.eventRegistration.delete({
+        await db.createEvent.delete({
           where: {
-            registrationId: registration.registrationId,
+            eventId: eventId,
           },
         });
       }
+      
+      else {
+        for (const registration of registrationData) {
+          console.log('registration id: ', registration.registrationId);
 
-      await db.createEvent.delete({
-        where: {
-          eventId: eventId,
-        },
-      });
+          await db.eventRegistration.delete({
+            where: {
+              registrationId: registration.registrationId,
+            },
+          });
+        }
+
+        await db.createEvent.delete({
+          where: {
+            eventId: eventId,
+          },
+        });
+      }
 
       return NextResponse.json(
         { message: 'Event and related registrations deleted successfully' },

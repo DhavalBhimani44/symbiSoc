@@ -5,11 +5,18 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 export default function Page() {
     return (
         <>
-            <div className="h-[40rem] w-full rounded-md bg-neutral-950 relative antialiased">            
-                    <div className="text-neutral-500 mx-auto my-2 text-sm text-center relative z-10">
-                        <SignInForm/>
-                    </div>                
-                <BackgroundBeams/>
+            <div className="h-full w-full rounded-md relative antialiased bg-blue-500 bg-fixed" style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex">
+                        <SignInForm />
+                    </div>
+                    <div className="flex">
+                        <SignInForm />
+                    </div>
+                    <div className="flex">
+                        <SignInForm />
+                    </div>
+                </div>
             </div>
         </>
     );

@@ -50,8 +50,8 @@ const page = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col h-screen items-center w-full bg-gradient-to-l from-blue-300 via-sky-200 to-blue-300' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-                    <div className="flxe flex-col w-full">
+                <div className='h-full w-full' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
+                    <div className="flex flex-col w-full">
                         <div className="flex text-6xl w-full justify-center items-center text-white my-2">
                             <h1>Upcoming Events</h1>
                         </div>

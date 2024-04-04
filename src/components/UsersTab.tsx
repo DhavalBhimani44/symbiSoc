@@ -8,8 +8,27 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectValue, SelectTrigger } from '@/components/ui/select';
+import { useToast } from "@/components/ui/use-toast";
+import { FormSchema } from '@/app/validationSchema';
+import 'react-toastify/dist/ReactToastify.css';
+
+type FormSchema = z.infer<typeof FormSchema>
 
 const UsersTab = () => {
+  const { toast } = useToast();
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     userId: "",
@@ -19,6 +38,17 @@ const UsersTab = () => {
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      userType: 'STUDENT',
+    },
+  });
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -81,6 +111,23 @@ const UsersTab = () => {
       console.error('Error deleting user:', error);
     }
   };
+
+  const handleAdd = async (values: z.infer<typeof FormSchema>) => {
+    try {
+      await axios.post('/api/user/addUser', values);
+      toast({
+        duration: 2000,
+        description: 'User added successfully'
+      })
+    } catch (error: any) {
+      toast({
+        duration: 2000,
+        description: 'Error adding user'
+      })
+      console.log("Following user")
+    }
+    console.log(values);
+  }
 
   const handleSearch = () => {
     const result = users.filter(user =>
@@ -155,10 +202,124 @@ const UsersTab = () => {
                 </TableCell>
                 <TableCell>
                   <Button onClick={handleSubmit}>Submit</Button>
-                </TableCell>                
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>
+        </div>
+
+        <div className="flex justify-between mb-4">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleAdd)}>
+              <div className="flex w-1/4">
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
+                      <FormControl>
+                        <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='Username' {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="flex w-1/4">
+                <FormField
+                  control={form.control}
+                  name='email'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
+                      <FormControl>
+                        <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='mail@sitpune.edu.in' {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="flex w-1/4">
+                <FormField
+                  control={form.control}
+                  name='password'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
+                      <FormControl>
+                        <Input
+                          type='password'
+                          className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
+                          placeholder='Enter your password'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="flex w-full">
+                <FormField
+                  control={form.control}
+                  name='confirmPassword'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel><div className='lg:text-xl sm:text-lg'>Re-enter Password</div></FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder='Re-Enter your password'
+                          className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
+                          type='password'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="flex w-1/4">
+                <FormField
+                  control={form.control}
+                  name='userType'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
+                      <FormControl>
+                        <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
+                          <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black">
+                            <SelectValue placeholder="User type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="STUDENT">Student</SelectItem>
+                            <SelectItem value="FACULTY">Faculty</SelectItem>
+                            <SelectItem value="CLUBINCHARGE">Club Incharge</SelectItem>
+                            <SelectItem value="ADMIN">Admin</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="flex w-1/4">
+                <Button
+                  className='w-max text-md shadow-indigo-500/50 hover:shadow-indigo-500/50 shadow-md hover:shadow-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 hover:bg-gradient-to-tl hover:from-fuchsia-500 hover:to-cyan-500 transition duration-300 ease-in-out'
+                  type='submit'
+                >
+                  Add User
+                </Button>
+              </div>
+            </form>
+          </Form>
         </div>
 
         <div className="flex justify-between mb-4">

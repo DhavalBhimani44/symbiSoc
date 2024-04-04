@@ -5,8 +5,8 @@ export async function DELETE(req: NextRequest) {
   if (req.method === 'DELETE') {
     try {
       const body = await req.json();
-      
-      if (!body.userId) {        
+
+      if (!body.userId) {
         return NextResponse.json(
           { message: 'userId is missing in the request body' },
           { status: 400 }
@@ -22,27 +22,30 @@ export async function DELETE(req: NextRequest) {
       });
 
       if (registrationData.length === 0) {
-        return NextResponse.json(
-          { message: 'No registrations found for the given eventId' },
-          { status: 404 }
-        );
-      }
-
-      for (const registration of registrationData) {
-        console.log('registration id: ', registration.registrationId);
-
-        await db.eventRegistration.delete({
+        await db.User.delete({
           where: {
-            registrationId: registration.registrationId,
+            userId: userId,
+          },
+        });        
+      }
+      else {
+
+        for (const registration of registrationData) {
+          console.log('registration id: ', registration.registrationId);
+
+          await db.eventRegistration.delete({
+            where: {
+              registrationId: registration.registrationId,
+            },
+          });
+        }
+
+        await db.User.delete({
+          where: {
+            userId: userId,
           },
         });
       }
-      
-      await db.User.delete({
-        where: {
-          userId: userId,
-        },
-      });
 
       return NextResponse.json(
         { message: 'User deleted successfully' },

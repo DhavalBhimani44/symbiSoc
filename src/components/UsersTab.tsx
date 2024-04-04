@@ -130,6 +130,12 @@ const UsersTab = () => {
   const handleAdd = async (values: z.infer<typeof FormSchema>) => {
     try {
       await axios.post('/api/user/addUser', values);
+      const response = await axios.get('/api/user/getUsers');
+      const updatedUsers = response.data;
+
+      // Update the users state with the updated list
+      setUsers(updatedUsers);      
+      form.reset();
       toast({
         duration: 2000,
         description: 'User added successfully'
@@ -346,7 +352,7 @@ const UsersTab = () => {
                 <TableCell>User Type</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
-              {searchResult.length > 0 ? searchResult.map((user:User) => (
+              {searchResult.length > 0 ? searchResult.map((user: User) => (
                 <TableRow key={user.userId}>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>

@@ -6,14 +6,13 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableRow,
 } from "@/components/ui/table";
 
 const UsersTab = () => {
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
-    userId: "", // Corrected the field name from 'username' to 'userId'
+    userId: "",
     username: "",
     email: "",
     userType: ""
@@ -56,10 +55,32 @@ const UsersTab = () => {
       const response = await axios.put(`/api/user/updateUsers`, formData);
       const updatedUser = response.data.data;
       setUsers(users.map(user => user.userId === updatedUser.userId ? updatedUser : user));
+      setFormData({
+        userId: null,
+        username: "",
+        email: "",
+        userType: "",
+      })
     } catch (error) {
       console.log('Error updating user: ', error);
     }
   }
+
+  const handleDelete = async (user) => {
+    try {
+      const userId = await user.userId;
+      console.log("user id: ", userId);
+      await axios.delete('/api/user/deleteUser', {
+        data: {
+          userId: userId
+        }
+      });
+      // Update the users state after successful deletion
+      setUsers(users.filter(user => user.userId !== userId));
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   const handleSearch = () => {
     const result = users.filter(user =>
@@ -71,96 +92,109 @@ const UsersTab = () => {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex justify-between mb-4">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search by email"
-            className="w-64 h-8 px-2"
-          />
-          <Button onClick={handleSearch}>Search</Button>
+        <div className="flex justify-between mb-4 w-full">
+          <div className="w-1/2 flex justify-end mx-1 items-center">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search by email"
+              className="w-64 h-8 px-2 text-black rounded-md"
+            />
+          </div>
+          <div className="w-1/2 flex mx-1 items-center">
+            <Button onClick={handleSearch}>Search</Button>
+          </div>
         </div>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>Username</TableCell>
-              <TableCell>Email Address</TableCell>
-              <TableCell>User Type</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  className="w-64 h-6"
-                  placeholder="Username"
-                />
-              </TableCell>
-              <TableCell>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-64 h-6"
-                  placeholder="Email"
-                />
-              </TableCell>
-              <TableCell>
-                <select
-                  id="userType"
-                  name="userType"
-                  value={formData.userType}
-                  onChange={handleChange}
-                >
-                  <option value="STUDENT">Student</option>
-                  <option value="FACULTY">Faculty</option>
-                  <option value="CLUBINCHARGE">Club Incharge</option>
-                  <option value="ADMIN">Admin</option>
-                </select>
-              </TableCell>
-              <TableCell>
-                <Button onClick={handleSubmit}>Submit</Button>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Username</TableCell>
-              <TableCell>Email Address</TableCell>
-              <TableCell>User Type</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {searchResult.length > 0 ? searchResult.map((user) => (
-              <TableRow key={user.userId}>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.userType}</TableCell>
-                <TableCell>
-                  <Button onClick={() => handleEdit(user)}>Edit</Button>
-                </TableCell>
+
+        <div className="flex justify-between mb-4">
+          <Table className="w-full">
+            <TableBody className="w-full">
+              <TableRow>
+                <TableCell className="w-1/4">Username</TableCell>
+                <TableCell className="w-1/4">Email Address</TableCell>
+                <TableCell className="w-1/4">User Type</TableCell>
+                <TableCell className="w-1/4">Action</TableCell>
               </TableRow>
-            )) : users.map((user) => (
-              <TableRow key={user.userId}>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.userType}</TableCell>
+              <TableRow className="text-black">
                 <TableCell>
-                  <Button onClick={() => handleEdit(user)}>Edit</Button>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    className="w-64 h-8 p-1 rounded-md"
+                    placeholder="Username"
+                  />
                 </TableCell>
+                <TableCell>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-64 h-8 p-1 rounded-md"
+                    placeholder="Email"
+                  />
+                </TableCell>
+                <TableCell>
+                  <select
+                    id="userType"
+                    name="userType"
+                    value={formData.userType}
+                    onChange={handleChange}
+                    className="w-64 h-8 p-1 rounded-md"
+                  >
+                    <option value="STUDENT">Student</option>
+                    <option value="FACULTY">Faculty</option>
+                    <option value="CLUBINCHARGE">Club Incharge</option>
+                    <option value="ADMIN">Admin</option>
+                  </select>
+                </TableCell>
+                <TableCell>
+                  <Button onClick={handleSubmit}>Submit</Button>
+                </TableCell>                
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableBody>
+          </Table>
+        </div>
+
+        <div className="flex justify-between mb-4">
+          <Table>
+            <TableBody className="w-full">
+              <TableRow>
+                <TableCell>Username</TableCell>
+                <TableCell>Email Address</TableCell>
+                <TableCell>User Type</TableCell>
+                <TableCell>Action</TableCell>
+              </TableRow>
+              {searchResult.length > 0 ? searchResult.map((user) => (
+                <TableRow key={user.userId}>
+                  <TableCell>{user.username}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.userType}</TableCell>
+                  <TableCell>
+                    <Button onClick={() => handleEdit(user)}>Edit</Button>
+                  </TableCell>
+                </TableRow>
+              )) : users.map((user) => (
+                <TableRow key={user.userId}>
+                  <TableCell>{user.username}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.userType}</TableCell>
+                  <TableCell>
+                    <Button onClick={() => handleEdit(user)}>Edit</Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button onClick={() => handleDelete(user)}>Delete</Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </>
   );

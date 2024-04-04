@@ -35,7 +35,7 @@ export default function InchargePage() {
                         </div>
                         <div className="flex w-1/3 bg-red-100">
                             <Link href="/admin/viewEvent" className="w-full hover:border-b-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
-                                Registered Events
+                                View Events
                             </Link>
                         </div>
                     </div>

@@ -31,14 +31,13 @@ export default function BasicCard({userRole}: BasicCardProps) {
     fetchEvents();
   }, []);
 
-  const handleDelete = async (eventId: any) => {
+  const handleDelete = async (eventId: number) => {
     try {
       await axios.delete('/api/event/deleteEvents', {
         data: {
           eventId: eventId
         }
-      });
-      // Update the events state after successful deletion
+      });      
       setEvents(events.filter(event => event.eventId !== eventId));
     } catch (error) {
       console.error('Error deleting event:', error);
@@ -46,7 +45,7 @@ export default function BasicCard({userRole}: BasicCardProps) {
   };
 
   const handleRegister = async (eventId: number) => {
-    try {
+    try {      
       // Perform registration
       await axios.post('/api/event/registerEvent', {
         eventId: eventId

@@ -7,14 +7,17 @@ import BasicCard from "@/components/BasicCard";
 
 const page = () => {
     const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
                 const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching events:', error);
+                setLoading(false);
             }
         };
 
@@ -57,13 +60,19 @@ const page = () => {
                         </div>
                     </div>
                 </div>
-                <div className='h-full w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundSize: 'cover', height: '1000', width: '1000' }}>
-                    <div className="flex h-screen flex-col w-full">
+                <div className='h-screen w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundSize: 'cover', height: '1000', width: '1000' }}>
+                    <div className="flex flex-col w-full">
                         <div className="flex text-6xl w-full h-full justify-center items-center text-white">
                             Upcoming Events
                         </div>
                         <div className="flex text-4xl w-full h-full">
-                            <BasicCard userRole="incharge" />
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : events.length === 0 ? (
+                                <div>No upcoming events</div>
+                            ) : (
+                                <BasicCard userRole="incharge" />
+                            )}
                         </div>
                     </div>
                 </div>

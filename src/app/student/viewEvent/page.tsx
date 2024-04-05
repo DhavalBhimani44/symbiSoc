@@ -7,6 +7,7 @@ import BasicCard from "@/components/BasicCard";
 
 const Page = () => {
     const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
@@ -14,8 +15,10 @@ const Page = () => {
             try {
                 const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching events:', error);
+                setLoading(false);
             }
         };
 
@@ -64,7 +67,13 @@ const Page = () => {
                             <h1>Event List</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            <BasicCard userRole="student" />
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : events.length === 0 ? (
+                                <div>No upcoming events.</div>
+                            ) : (
+                                <BasicCard userRole="student" />
+                            )}
                         </div>
                     </div>
                 </div>

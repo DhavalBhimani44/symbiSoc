@@ -7,14 +7,17 @@ import BasicCard from "@/components/BasicCard";
 
 const page = () => {
     const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
                 const response = await axios.get('/api/event/viewEvents');
                 setEvents(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching events:', error);
+                setLoading(false);
             }
         };
 
@@ -53,12 +56,18 @@ const page = () => {
                     </div>
                 </div>
                 <div className='h-full w-3/4' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-                    <div className="flex flex-col w-full">
-                        <div className="flex text-6xl w-full justify-center items-center text-white my-2">
+                    <div className="flex flex-col w-full text-white">
+                        <div className="flex text-6xl w-full justify-center items-center my-2">
                             <h1>Upcoming Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            <BasicCard userRole="incharge" />
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : events.length === 0 ? (
+                                <div>No upcoming events</div>
+                            ) : (
+                                <BasicCard userRole="incharge" />
+                            )}
                         </div>
                     </div>
                 </div>

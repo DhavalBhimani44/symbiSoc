@@ -9,14 +9,17 @@ import React, { useState, useEffect } from "react";
 export default function InchargePage() {
     const router = useRouter();
     const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const registeredEvents = async () => {
             try {
                 const response = await axios.get('/api/event/registeredEvents');
                 setEvents(response.data);
+                setLoading(false);
             } catch (error) {
                 console.log('Error fetching registered events: ', error);
+                setLoading(false);
             }
         };
         registeredEvents();
@@ -51,7 +54,13 @@ export default function InchargePage() {
                             <h1>Registered Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            <RegisteredBasicCard />
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : events.length === 0 ? (
+                                <div>No upcoming events</div>
+                            ) : (
+                                <RegisteredBasicCard />
+                            )}
                         </div>
                     </div>
                 </div>

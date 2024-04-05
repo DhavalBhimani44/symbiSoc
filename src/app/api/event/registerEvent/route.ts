@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
 
-        const userData = await verifyToken(request);
+        const userData = verifyToken(request);
         const userId = userData.userId;
         
         console.log("user id: ",userId);
@@ -16,12 +16,17 @@ export async function POST(request: NextRequest) {
         const eventData = await db.createEvent.findUnique({
             where: {
                 eventId: body.eventId
+            },
+            select: {
+                eventId: true,
+                eventName: true,
+                eventDescription: true,
+                organisingClub: true
             }
         });
+        console.log("Event data isssssssssssss: ", eventData)
         const eventId = eventData?.eventId
-        console.log("event data",eventId)
         const eventName = eventData?.eventName
-        console.log(eventName)
 
         if (!eventData) {
             return NextResponse.json({ message: "Event not found" }, { status: 404 });

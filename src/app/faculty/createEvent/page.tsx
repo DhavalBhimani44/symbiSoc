@@ -13,7 +13,7 @@ const page = () => {
                     </div>
                     <div className="flex w-full">
                         <Link href="/faculty/viewEvent" className="w-full hover:border-r-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
-                            View Event
+                            View Events
                         </Link>
                     </div>
                 </div>

@@ -50,7 +50,7 @@ const page = () => {
                         </div>
                         <div className="flex w-full">
                             <Link href="/faculty/viewEvent" className="w-full border-r-4 border-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
-                                View Event
+                                View Events
                             </Link>
                         </div>
                     </div>

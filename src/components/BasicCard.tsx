@@ -10,12 +10,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { date } from 'zod';
 import { useRouter } from 'next/navigation';
+import { toast, useToast } from '@/components/ui/use-toast';
 
 interface BasicCardProps {
   userRole: "student" | "incharge";
 }
 
-export default function BasicCard({userRole}: BasicCardProps) {
+export default function BasicCard({ userRole }: BasicCardProps) {
   const [events, setEvents] = useState([]);
   const router = useRouter();
 
@@ -37,28 +38,43 @@ export default function BasicCard({userRole}: BasicCardProps) {
         data: {
           eventId: eventId
         }
-      });      
+      });
+      toast({
+        duration: 2000,
+        description: 'Event deleted successfully'
+      })
       setEvents(events.filter(event => event.eventId !== eventId));
     } catch (error) {
       console.error('Error deleting event:', error);
+      toast({
+        duration: 2000,
+        description: 'Error deleting event'
+      })
     }
   };
 
   const handleRegister = async (eventId: number) => {
-    try {      
+    try {
       // Perform registration
       await axios.post('/api/event/registerEvent', {
         eventId: eventId
       });
-      
       // Redirect to the registered events page
-      if(userRole === 'incharge') {
-      router.push('/incharge/registeredEvents')
+      if (userRole === 'incharge') {
+        router.push('/incharge/registeredEvents')
       } else {
         router.push('/student/registeredEvents')
       }
+      toast({
+        duration: 2000,
+        description: 'Registration successfull'
+      })
     } catch (error) {
       console.error('Error registering for event:', error);
+      toast({
+        duration: 2000,
+        description: 'Registration failed'
+      })
     }
   };
 
@@ -97,18 +113,19 @@ export default function BasicCard({userRole}: BasicCardProps) {
               <CardContent orientation="horizontal">
                 {userRole === "incharge" && (
                   <Button
-                      variant="solid"
-                      size="md"
-                      color="danger"
-                      aria-label="Delete Event"
-                      onClick={() => {
-                        handleDelete(event.eventId)
-                        window.location.reload()}}
-                      sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                    variant="solid"
+                    size="md"
+                    color="danger"
+                    aria-label="Delete Event"
+                    onClick={() => {
+                      handleDelete(event.eventId)
+                      window.location.reload()
+                    }}
+                    sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
 
-                    >
-                      Delete
-                    </Button>
+                  >
+                    Delete
+                  </Button>
                 )}
                 <Button
                   variant="solid"

@@ -48,7 +48,7 @@ const Page = () => {
                     </div>
                 </div>
                 <div className='w-3/4 h-screen bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-                    <div className="flxe flex-col w-full">
+                    <div className="flex flex-col w-full">
                         <div className="flex text-6xl w-full justify-center items-center text-white my-2">
                             <h1>Upcoming Events</h1>
                         </div>

@@ -10,6 +10,11 @@ export default function InchargePage() {
     const router = useRouter();
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    })
 
     useEffect(() => {
         const registeredEvents = async () => {
@@ -27,7 +32,7 @@ export default function InchargePage() {
 
     return (
         <>
-            <div className="flex w-full h-screen">
+            <div className="flex w-full h-full">
                 <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-slate-300 bg-neutral-900">
                     <div className="top-14 z-10 fixed w-1/4">
                         <div className="flex w-full">
@@ -48,7 +53,7 @@ export default function InchargePage() {
                     </div>
                 </div>
 
-                <div className='w-3/4 h-screen bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
+                <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-4 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
                     <div className="flex flex-col w-full">
                         <div className="flex text-6xl w-full justify-center items-center text-white">
                             <h1>Registered Events</h1>
@@ -59,7 +64,9 @@ export default function InchargePage() {
                             ) : events.length === 0 ? (
                                 <div>No upcoming events</div>
                             ) : (
-                                <RegisteredBasicCard />
+                                <div className={`${isVisible ? 'slide-in' : ''}`}>
+                                    <RegisteredBasicCard />
+                                </div>
                             )}
                         </div>
                     </div>

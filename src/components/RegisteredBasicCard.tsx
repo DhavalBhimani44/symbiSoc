@@ -5,9 +5,7 @@ import Typography from '@mui/joy/Typography';
 import Image from 'next/image';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { date } from 'zod';
 import { useRouter } from 'next/navigation';
-import { useToast } from '@/components/ui/use-toast';
 
 interface EventProps {
     eventName: string;

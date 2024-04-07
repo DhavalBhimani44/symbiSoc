@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { toast, useToast } from '@/components/ui/use-toast';
 
 interface BasicCardProps {
-  userRole: "student" | "incharge";
+  userRole: "student" | "incharge" | "admin" | "faculty";
 }
 
 export default function BasicCard({ userRole }: BasicCardProps) {
@@ -78,6 +78,20 @@ export default function BasicCard({ userRole }: BasicCardProps) {
     }
   };
 
+  const eventDetail = async (eventId: number) => {
+    if (userRole === 'student') {
+      router.push(`/student/viewEvent/${eventId}`);
+    } else if (userRole === 'admin') {
+      router.push(`/admin/viewEvent/${eventId}`);
+    } else if (userRole === 'faculty') {
+      router.push(`/faculty/viewEvent/${eventId}`);
+    } else if (userRole === 'incharge') {
+      router.push(`/incharge/viewEvent/${eventId}`);
+    } else {
+      router.push('/student');
+    }
+  }
+
   return (
     <div className='w-full my-6'>
       <ul>
@@ -137,6 +151,16 @@ export default function BasicCard({ userRole }: BasicCardProps) {
 
                 >
                   Register
+                </Button>
+                <Button
+                  variant="solid"
+                  size="md"
+                  color="primary"
+                  aria-label="Register Event"
+                  sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                  onClick={() => eventDetail(event.eventId)}
+                >
+                  More Info
                 </Button>
               </CardContent>
             </Card >

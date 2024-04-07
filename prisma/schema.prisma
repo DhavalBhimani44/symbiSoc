@@ -52,7 +52,7 @@ model createEvent {
   speakerDesignation String
   speakerDescription String
   eventType1         eventType1   @default(OFFLINE)
-  eventType2         eventType2   @default(OPENTOALL)
+  eventType2         eventType2   @default(EVERYONE)
   organisingClub     organisingClub  @default(SELECT)
   createdAt          DateTime     @default(now())
   updatedAt          DateTime   @updatedAt
@@ -80,5 +80,5 @@ enum eventType1 {
 
 enum eventType2 {
   CLUBMEMBERS
-  OPENTOALL
+  EVERYONE
 }

@@ -240,7 +240,7 @@ const CreateEventForm = () => {
                                                             <SelectValue placeholder="User type" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            <SelectItem value="OPENTOALL">Open to all</SelectItem>
+                                                            <SelectItem value="EVERYONE">All</SelectItem>
                                                             <SelectItem value="CLUBMEMBERS">Club Members</SelectItem>
                                                         </SelectContent>
                                                     </Select>

@@ -13,7 +13,6 @@ interface EventProps {
     organisingClub: string;
 }
 
-
 export default function BasicCard() {
     const [events, setEvents] = useState<EventProps[]>([]);
     const router = useRouter();

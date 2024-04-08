@@ -29,12 +29,12 @@ const Page = ({ params }: any) => {
                 <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
                     <div className="top-14 z-10 fixed w-1/4">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href='/student/viewEvent' className="w-full hover:border-l-4 hover:border-red-500 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2 hover:text-red-500">
+                            <Link href='/student/viewEvent' className="w-full hover:border-l-4 hover:border-red-600 hover:text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 View Events
                             </Link>
                         </div>
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href='/student/registeredEvents' className="w-full hover:border-l-4 hover:border-red-500 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2 hover:text-red-500">
+                            <Link href='/student/registeredEvents' className="w-full hover:border-l-4 hover:border-yellow-600 hover:text-yellow-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Registered Events
                             </Link>
                         </div>
@@ -45,8 +45,8 @@ const Page = ({ params }: any) => {
                 <div className="w-3/4 flex">
                     <ul className="w-full">
                         {events.map(event => (
-                            <li key={event.eventId} className="flex flex-col w-full">
-                                <div className="flex flex-col w-full pl-4 bg-gray-200 h-screen">
+                            <li key={event.eventId} className="flex flex-col w-full bg-gray-200">
+                                <div className="flex flex-col w-full pl-4 bg-gray-200 h-screen" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("/SIT_Pune.png")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'scale-down', height: '100%', width: '100%' }}>
                                     <div className="flex justify-center items-center text-2xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-6xl w-full mt-4">
                                         <div className="flex font-semibold justify-center items-center w-full">{event.eventName} by {event.organisingClub} club</div>
                                     </div>

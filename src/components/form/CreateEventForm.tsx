@@ -196,7 +196,7 @@ const CreateEventForm = () => {
                                         name='eventPlatform'
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform*</div></FormLabel>
+                                                <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform (if online)*</div></FormLabel>
                                                 <FormControl>
                                                     <Input placeholder="Platform" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                                 </FormControl>
@@ -233,7 +233,7 @@ const CreateEventForm = () => {
                                         name='eventType2'
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel><div className='lg:text-xl sm:text-lg'>Event Type</div></FormLabel>
+                                                <FormLabel><div className='lg:text-xl sm:text-lg'>Open to</div></FormLabel>
                                                 <FormControl>
                                                     <Select {...field} onValueChange={(selectedValue) => form.setValue('eventType2', selectedValue)}>
                                                         <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black">

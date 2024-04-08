@@ -62,7 +62,7 @@ export default function InchargePage() {
                             {loading ? (
                                 <div>Loading...</div>
                             ) : events.length === 0 ? (
-                                <div>No upcoming events</div>
+                                <div>No registered events</div>
                             ) : (
                                 <div className={`${isVisible ? 'slide-in' : ''}`}>
                                     <RegisteredBasicCard />

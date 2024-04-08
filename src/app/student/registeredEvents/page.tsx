@@ -58,7 +58,7 @@ export default function StudentPage() {
                             {loading ? (
                                 <div>Loading...</div>
                             ) : events.length === 0 ? (
-                                <div>No upcoming events</div>
+                                <div>No registered events</div>
                             ) : (
                                 <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
                                     <RegisteredBasicCard />

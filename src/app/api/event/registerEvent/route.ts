@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
                 organisingClub: true
             }
         });
-        console.log("Event data isssssssssssss: ", eventData)
+        console.log("Event data is: ", eventData)
         const eventId = eventData?.eventId
         const eventName = eventData?.eventName
 

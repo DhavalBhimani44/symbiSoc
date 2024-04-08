@@ -27,14 +27,17 @@ const CreateEventForm = () => {
     const { toast } = useToast();
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(false);
+
+    const defaultEventDate = moment(new Date()).format('DD/MM/YYYY');
+    const defaultEventTime = moment(new Date()).format('HH:mm');
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
             eventName: '',
             eventDescription: '',
             organisingClub: '',
-            eventDate: new Date().toLocaleDateString('en-US'),
-            eventTime: new Date().toISOString(),
+            eventDate: defaultEventDate,
+            eventTime: defaultEventTime,
             eventVenue: '',
             eventPlatform: '',
             speakerName: '',
@@ -51,13 +54,15 @@ const CreateEventForm = () => {
 
     const onSubmit = async (values: z.infer<typeof eventSchema>) => {
         try {
-            const formattedEventDate = moment(values.eventDate, 'Do-MM-YYYY').toISOString();
-            const formattedEventTime = moment(values.eventTime, 'HH:mm:ss').toISOString();
+            const eventDate = new Date(values.eventDate);
+            const formattedEventDate = eventDate.toISOString()
+
+            const eventTime = moment(values.eventTime, 'HH:mm').toISOString()
 
             const formattedValues = {
                 ...values,
                 eventDate: formattedEventDate,
-                eventTime: formattedEventTime,
+                eventTime: eventTime,
             };
 
             await axios.post('/api/event/createEvent', formattedValues);

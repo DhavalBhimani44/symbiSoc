@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import moment from "moment";
 
 const Page = ({ params }: any) => {
     const [events, setEvents] = useState([]);
     const eventId = params?.eventId;
+    const [eventDt, setEventDate] = useState('');
+    const [eventTm, setEventTime] = useState('');
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -22,6 +25,37 @@ const Page = ({ params }: any) => {
         fetchEvents();
     }, [eventId]);
 
+    useEffect(() => {
+        const fetchDateandTime = async (evenId: number) => {
+            try {
+                const filteredEvents = eventId ? allEvents.filter(event => event.eventId === Number(eventId)) : [];
+                const response = await axios.get(`/api/event/getDateAndTime`, {
+                    data:{
+                        eventId:filteredEvents
+                    }
+                });
+                console.log(response.data);
+
+                const events = response.data;
+
+                const event = events[0];
+
+                const eventDate = event.eventDate;
+                const eventTime = event.eventTime;
+
+                const formattedEventDate = moment(eventDate).format('Do MMMM, YYYY');
+                const formattedEventTime = moment(eventTime).format('h:mm A');
+
+                setEventDate(formattedEventDate);
+                setEventTime(formattedEventTime);
+                
+            } catch (error) {
+                console.error("Error fetching Date and Time: ", error)
+            }
+        }
+
+        fetchDateandTime(eventId);
+    }, [eventId]);
 
     return (
         <>
@@ -69,11 +103,11 @@ const Page = ({ params }: any) => {
                                         </div>
                                         <div className="flex">
                                             <div className="font-bold">Date: </div>
-                                            <div></div>
+                                            <div>{eventDt}</div>
                                         </div>
                                         <div className="flex">
                                             <div className="font-bold">Time: </div>
-                                            <div></div>
+                                            <div>{eventTm}</div>
                                         </div>
                                         <div className="flex">
                                             <div className="font-bold">Venue: </div>

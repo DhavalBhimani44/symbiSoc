@@ -10,13 +10,13 @@ datasource db {
 // models
 
 model User {
-  userId        Int      @id @default(autoincrement())
-  email         String   @unique
-  username      String   @unique
+  userId        Int                 @id @default(autoincrement())
+  email         String              @unique
+  username      String              @unique
   password      String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  userType      userType @default(STUDENT)
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  userType      userType            @default(STUDENT)
   registrations EventRegistration[]
 }
 
@@ -28,22 +28,22 @@ enum userType {
 }
 
 model EventRegistration {
-  registrationId           Int        @id @default(autoincrement())
-  user         User       @relation(fields: [userId], references: [userId])
-  userId       Int
-  username     String     @map("username") // Map to the username column in the database
-  event        createEvent @relation(fields: [eventId], references: [eventId])
-  eventId      Int
-  eventName    String     @map("eventName") // Map to the event_name column in the database
-  registration DateTime   @default(now())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+  registrationId Int         @id @default(autoincrement())
+  user           User        @relation(fields: [userId], references: [userId])
+  userId         Int
+  username       String      @map("username") // Map to the username column in the database
+  event          createEvent @relation(fields: [eventId], references: [eventId])
+  eventId        Int
+  eventName      String      @map("eventName") // Map to the event_name column in the database
+  registration   DateTime    @default(now())
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
 }
 
 model createEvent {
-  eventId                 Int          @id @default(autoincrement())
-  eventName          String       
-  eventDescription   String       
+  eventId            Int                 @id @default(autoincrement())
+  eventName          String
+  eventDescription   String
   eventDate          DateTime
   eventTime          DateTime
   eventVenue         String
@@ -51,12 +51,12 @@ model createEvent {
   speakerName        String
   speakerDesignation String
   speakerDescription String
-  eventType1         eventType1   @default(OFFLINE)
-  eventType2         eventType2   @default(EVERYONE)
-  organisingClub     organisingClub  @default(SELECT)
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime   @updatedAt
-  deletedAt          DateTime?    @map("deleted_at")
+  eventType1         eventType1          @default(OFFLINE)
+  eventType2         eventType2          @default(EVERYONE)
+  organisingClub     organisingClub      @default(SELECT)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  deletedAt          DateTime?           @map("deleted_at")
   registrations      EventRegistration[]
 }
 

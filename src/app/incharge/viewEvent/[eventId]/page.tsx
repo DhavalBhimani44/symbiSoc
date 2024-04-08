@@ -27,16 +27,12 @@ const Page = ({ params }: any) => {
 
     useEffect(() => {
         const fetchDateandTime = async (evenId: number) => {
-            try {
+            try {                                
+                const response = await axios.get('/api/event/viewEvents');
+                const allEvents = response.data;
                 const filteredEvents = eventId ? allEvents.filter(event => event.eventId === Number(eventId)) : [];
-                const response = await axios.get(`/api/event/getDateAndTime`, {
-                    data:{
-                        eventId:filteredEvents
-                    }
-                });
-                console.log(response.data);
 
-                const events = response.data;
+                const events = filteredEvents;
 
                 const event = events[0];
 

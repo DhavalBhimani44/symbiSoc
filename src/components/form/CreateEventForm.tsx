@@ -41,7 +41,7 @@ const CreateEventForm = () => {
             speakerDescription: '',
             speakerDesignation: '',
             eventType1: 'OFFLINE',
-            eventType2: 'OPENTOALL',
+            eventType2: 'EVERYONE',
         },
     });
 

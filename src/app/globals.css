@@ -101,3 +101,25 @@
   height: 200px; /* Adjust height as needed */
   background: linear-gradient(to bottom right, #8a2be2, #0000ff, #00ff00, #ffff00);
 }
+
+@keyframes pageLoadAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-1%);
+  }
+  50% {
+    transform: translateX(-0%);
+  }
+  75% {
+    transform: translateX(-0.5%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-pageLoad {
+  animation: pageLoadAnimation 0.5s ease-out forwards;
+}

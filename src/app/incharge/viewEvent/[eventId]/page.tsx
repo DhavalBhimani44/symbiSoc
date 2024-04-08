@@ -26,7 +26,7 @@ const Page = ({ params }: any) => {
     }, [eventId]);
 
     useEffect(() => {
-        const fetchDateandTime = async (evenId: number) => {
+        const fetchDateandTime = async () => {
             try {                                
                 const response = await axios.get('/api/event/viewEvents');
                 const allEvents = response.data;

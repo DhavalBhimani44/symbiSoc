@@ -15,6 +15,10 @@ interface BasicCardProps {
   userRole: "student" | "incharge" | "admin" | "faculty";
 }
 
+interface Event{
+  eventId: number;
+}
+
 export default function BasicCard({ userRole }: BasicCardProps) {
   const [events, setEvents] = useState([]);
   const router = useRouter();
@@ -42,7 +46,7 @@ export default function BasicCard({ userRole }: BasicCardProps) {
         duration: 2000,
         description: 'Event deleted successfully'
       });
-      setEvents(events.filter(event => event.eventId !== eventId));
+      setEvents(events.filter((event: Event) => event.eventId !== eventId));
     } catch (error) {
       console.error('Error deleting event:', error);
       toast({

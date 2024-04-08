@@ -26,20 +26,22 @@ const Page = ({ params }: any) => {
     return (
         <>
             <div className="flex w-full h-full">
-                <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-slate-300 bg-neutral-900">
+                <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
                     <div className="top-14 z-10 fixed w-1/4">
-                        <div className="flex w-full">
-                            <Link href='/student/viewEvent' className="w-full hover:border-r-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                        <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                            <Link href='/student/viewEvent' className="w-full hover:border-l-4 hover:border-red-500 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2 hover:text-red-500">
                                 View Events
                             </Link>
                         </div>
-                        <div className="flex w-full">
-                            <Link href='/student/registeredEvents' className="w-full hover:border-r-4 hover:border-red-400 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                        <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                            <Link href='/student/registeredEvents' className="w-full hover:border-l-4 hover:border-red-500 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2 hover:text-red-500">
                                 Registered Events
                             </Link>
                         </div>
                     </div>
                 </div>
+
+
                 <div className="w-3/4 flex">
                     <ul className="w-full">
                         {events.map(event => (

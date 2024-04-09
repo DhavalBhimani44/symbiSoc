@@ -41,6 +41,24 @@ export default function BasicCard({ userRole }: BasicCardProps) {
 
   const handleDelete = async (eventId: number) => {
     try {
+      const eventToDelete = events.find((event: Event) => event.eventId === eventId);
+      if (!eventToDelete) {
+        console.error('Event not found');
+        return;
+      }
+  
+      const eventDate = new Date(eventToDelete.eventDate);
+      const currentDate = new Date();
+  
+      if (eventDate < currentDate) {
+        toast({
+          duration: 2000,
+          description: 'Cannot delete past events.'
+        });
+        console.log('Cannot delete past events.');
+        return;
+      }
+  
       await axios.delete('/api/event/deleteEvents', {
         data: {
           eventId: eventId
@@ -59,6 +77,7 @@ export default function BasicCard({ userRole }: BasicCardProps) {
       });
     }
   };
+  
 
   const handleRegister = async (eventId: number) => {
     try {
@@ -138,7 +157,6 @@ export default function BasicCard({ userRole }: BasicCardProps) {
                     aria-label="Delete Event"
                     onClick={() => {
                       handleDelete(event.eventId)
-                      window.location.reload()
                     }}
                     sx={{ fontWeight: 600 }}
                   >

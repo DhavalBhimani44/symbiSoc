@@ -85,6 +85,10 @@
   animation: slideInAnimation 1s ease-in-out;
 }
 
+.slide-down {
+  animation: slideDownAnimation 1s ease-in-out;
+}
+
 @keyframes slideInAnimation {
   from {
     transform: translateX(-100%);
@@ -93,6 +97,23 @@
 
   to {
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownAnimation {
+  0% {
+    transform: translateY(-100%);
+    opacity:0;
+  } 
+  50% {    
+    opacity: 0.10;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }

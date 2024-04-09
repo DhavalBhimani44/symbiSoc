@@ -53,6 +53,16 @@ const UsersTab = () => {
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState<User[]>([]);
+  const [isopen, setIsopen] = useState(false);
+
+  const toggleDropdown = () => {
+    if (isopen) {
+      form.reset();
+      setIsopen(false);
+    } else {
+      setIsopen(true);
+    }
+  }
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -106,12 +116,13 @@ const UsersTab = () => {
         email: "",
         userType: "",
       })
+      setIsopen(false);
     } catch (error) {
       console.log('Error updating user: ', error);
     }
   }
 
-  const handleDelete = async (user:User) => {
+  const handleDelete = async (user: User) => {
     try {
       const userId = user.userId;
       console.log("user id: ", userId);
@@ -132,9 +143,9 @@ const UsersTab = () => {
       await axios.post('/api/user/addUser', values);
       const response = await axios.get('/api/user/getUsers');
       const updatedUsers = response.data;
-
+      setIsopen(false);
       // Update the users state with the updated list
-      setUsers(updatedUsers);      
+      setUsers(updatedUsers);
       form.reset();
       toast({
         duration: 2000,
@@ -160,18 +171,142 @@ const UsersTab = () => {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex justify-between mb-4 w-full">
-          <div className="w-1/2 flex justify-end mx-1 items-center">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by email"
-              className="w-64 h-8 px-2 text-black rounded-md"
-            />
+        <div className="flex flex-wrap justify-between mb-4 w-full">
+          <div className="flex flex-wrap w-full sm:w-full md:w-full lg:w-1/2 xl:w-1/2 my-0 sm:my-4 md:my-4 lg:my-0 xl:my-0">
+            <div className="w-full flex justify-end items-center sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4 mx-0 sm:mx-2 md:mx-2 lg:mx-0 xl:mx-0 my-0 sm:my-2 md:my-2 lg:my-0 xl:my-0">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by email"
+                className="w-64 h-8 px-2 text-black rounded-md"
+              />
+            </div>
+            <div className="w-full flex items-center sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4 sm:mx-2 md:mx-2 lg:mx-0 xl:mx-0">
+              <Button onClick={handleSearch}>Search</Button>
+            </div>
           </div>
-          <div className="w-1/2 flex mx-1 items-center">
-            <Button onClick={handleSearch}>Search</Button>
+
+          <div className="flex w-full sm:w-full md:w-full lg:w-1/2 xl:w-1/2 justify-center items-center">
+            <div className="flex flex-col mb-4 w-full sm:w-full md:w-full lg:w-4/5 xl:w-4/5">
+              <Button onClick={toggleDropdown} className="flex justify-center items-center z-10">
+                Add user Tab
+              </Button>
+              {isopen &&
+                <div className="flex justify-center items-center bg-neutral-900 rounded-md py-4 px-2 slide-down">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(handleAdd)}>
+                      <div className="flex w-1/4">
+                        <FormField
+                          control={form.control}
+                          name="username"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
+                              <FormControl>
+                                <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='Username' {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="flex w-1/4">
+                        <FormField
+                          control={form.control}
+                          name='email'
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
+                              <FormControl>
+                                <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='mail@sitpune.edu.in' {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="flex w-1/4">
+                        <FormField
+                          control={form.control}
+                          name='password'
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel><div className='lg:text-xl sm:text-lg flex w-1/2'>Password</div></FormLabel>
+                              <FormControl>
+                                <Input
+                                  type='password'
+                                  className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
+                                  placeholder='Enter your password'
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="flex w-1/4">
+                        <FormField
+                          control={form.control}
+                          name='confirmPassword'
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel><div className='lg:text-xl sm:text-lg'>Re-enter Password</div></FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder='Re-Enter your password'
+                                  className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
+                                  type='password'
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="flex w-1/4">
+                        <FormField
+                          control={form.control}
+                          name='userType'
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
+                              <FormControl>
+                                <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
+                                  <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black">
+                                    <SelectValue placeholder="User type" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="STUDENT">Student</SelectItem>
+                                    <SelectItem value="FACULTY">Faculty</SelectItem>
+                                    <SelectItem value="CLUBINCHARGE">Club Incharge</SelectItem>
+                                    <SelectItem value="ADMIN">Admin</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="flex w-1/4">
+                        <Button
+                          className='w-full flex justify-center items-center text-md shadow-indigo-500/50 hover:shadow-indigo-500/50 shadow-sm hover:shadow-md bg-gradient-to-br from-fuchsia-500 to-cyan-500 hover:bg-gradient-to-tl hover:from-fuchsia-500 hover:to-cyan-500 transition duration-300 ease-in-out'
+                          type='submit'
+                        >
+                          <div className="w-full flex justify-center items-center">Add User</div>
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </div>}
+            </div>
           </div>
         </div>
 
@@ -227,120 +362,6 @@ const UsersTab = () => {
               </TableRow>
             </TableBody>
           </Table>
-        </div>
-
-        <div className="flex justify-between mb-4">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleAdd)}>
-              <div className="flex w-1/4">
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel><div className='lg:text-xl sm:text-lg'>Username</div></FormLabel>
-                      <FormControl>
-                        <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='Username' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex w-1/4">
-                <FormField
-                  control={form.control}
-                  name='email'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel><div className='lg:text-xl sm:text-lg'>Email</div></FormLabel>
-                      <FormControl>
-                        <Input className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black' placeholder='mail@sitpune.edu.in' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex w-1/4">
-                <FormField
-                  control={form.control}
-                  name='password'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel><div className='lg:text-xl sm:text-lg'>Password</div></FormLabel>
-                      <FormControl>
-                        <Input
-                          type='password'
-                          className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
-                          placeholder='Enter your password'
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex w-full">
-                <FormField
-                  control={form.control}
-                  name='confirmPassword'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel><div className='lg:text-xl sm:text-lg'>Re-enter Password</div></FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder='Re-Enter your password'
-                          className='w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black'
-                          type='password'
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex w-1/4">
-                <FormField
-                  control={form.control}
-                  name='userType'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel><div className='lg:text-xl sm:text-lg'>User Type</div></FormLabel>
-                      <FormControl>
-                        <Select {...field} onValueChange={(selectedValue) => form.setValue('userType', selectedValue)}>
-                          <SelectTrigger className="w-48 sm:w-56 md:w-56 lg:w-56 xl:w-64 shadow-lg bg-slate-200 text-black">
-                            <SelectValue placeholder="User type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="STUDENT">Student</SelectItem>
-                            <SelectItem value="FACULTY">Faculty</SelectItem>
-                            <SelectItem value="CLUBINCHARGE">Club Incharge</SelectItem>
-                            <SelectItem value="ADMIN">Admin</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex w-1/4">
-                <Button
-                  className='w-max text-md shadow-indigo-500/50 hover:shadow-indigo-500/50 shadow-md hover:shadow-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 hover:bg-gradient-to-tl hover:from-fuchsia-500 hover:to-cyan-500 transition duration-300 ease-in-out'
-                  type='submit'
-                >
-                  Add User
-                </Button>
-              </div>
-            </form>
-          </Form>
         </div>
 
         <div className="flex justify-between mb-4">

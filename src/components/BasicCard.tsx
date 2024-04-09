@@ -13,10 +13,14 @@ import { toast } from '@/components/ui/use-toast';
 
 interface BasicCardProps {
   userRole: "student" | "incharge" | "admin" | "faculty";
+  event: Event
 }
 
-interface Event{
+interface Event {
   eventId: number;
+  eventName: string;
+  eventDescription: string;
+  organisingClub: string;
 }
 
 export default function BasicCard({ userRole }: BasicCardProps) {

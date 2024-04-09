@@ -1,13 +1,21 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Link from 'next/link';
-import { Button } from "@/components/ui/button";
-import Card from "@mui/joy/Card";
 import BasicCard from "@/components/BasicCard";
+import Link from "next/link";
+
+interface Event {
+    id: number;
+    eventId: number;
+    eventName: string;
+    eventDate: Date;
+    eventDescription: string;
+    organisingClub: string;
+}
 
 const Page = () => {
-    const [events, setEvents] = useState([]);
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+    const [pastEvents, setPastEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -19,7 +27,11 @@ const Page = () => {
         const fetchEvents = async () => {
             try {
                 const response = await axios.get('/api/event/viewEvents');
-                setEvents(response.data);
+                const currentDate = new Date();
+                const upcoming = response.data.filter((event: Event) => new Date(event.eventDate) > currentDate);
+                const past = response.data.filter((event: Event) => new Date(event.eventDate) <= currentDate);
+                setUpcomingEvents(upcoming);
+                setPastEvents(past);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -60,17 +72,37 @@ const Page = () => {
                         <div className="flex text-4xl w-full">
                             {loading ? (
                                 <div>Loading...</div>
-                            ) : events.length === 0 ? (
+                            ) : upcomingEvents.length === 0 ? (
                                 <div>No upcoming events</div>
                             ) : (
                                 <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
-                                    <BasicCard userRole="incharge" />
+                                    {upcomingEvents.map((event: Event) => (
+                                        <BasicCard key={event.id} event={event} userRole="incharge" />
+                                    ))}
                                 </div>
                             )}
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-full">
+                        <div className="flex text-6xl w-full justify-center items-center text-white my-2">
+                            <h1>Past Events</h1>
+                        </div>
+                        <div className="flex text-4xl w-full">
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : pastEvents.length === 0 ? (
+                                <div>No past events</div>
+                            ) : (
+                                <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                    {pastEvents.map((event: Event) => (
+                                        <BasicCard key={event.id} event={event} userRole="incharge" />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div >
         </>
     );
 };

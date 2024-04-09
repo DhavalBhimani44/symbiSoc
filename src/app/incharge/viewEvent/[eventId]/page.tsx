@@ -4,6 +4,20 @@ import axios from "axios";
 import Link from "next/link";
 import moment from "moment";
 
+interface Event{
+    eventId: number,
+    eventName: string,
+    eventDescription: string,
+    organisingClub: string,
+    eventVenue: string,
+    eventPlatform: string,
+    speakerName: string,
+    speakerDesignation: string,
+    speakerDescription: string,
+    eventType1: string,
+    eventType2: string,
+}
+
 const Page = ({ params }: any) => {
     const [events, setEvents] = useState([]);
     const eventId = params?.eventId;
@@ -15,7 +29,7 @@ const Page = ({ params }: any) => {
             try {
                 const response = await axios.get('/api/event/viewEvents');
                 const allEvents = response.data;
-                const filteredEvents = eventId ? allEvents.filter(event => event.eventId === Number(eventId)) : [];
+                const filteredEvents = eventId ? allEvents.filter((event: Event) => event.eventId === Number(eventId)) : [];
                 setEvents(filteredEvents);
             } catch (error) {
                 console.error("Error fetching events:", error);
@@ -26,11 +40,11 @@ const Page = ({ params }: any) => {
     }, [eventId]);
 
     useEffect(() => {
-        const fetchDateandTime = async (evenId: number) => {
+        const fetchDateandTime = async () => {
             try {                                
                 const response = await axios.get('/api/event/viewEvents');
                 const allEvents = response.data;
-                const filteredEvents = eventId ? allEvents.filter(event => event.eventId === Number(eventId)) : [];
+                const filteredEvents = eventId ? allEvents.filter((event: Event) => event.eventId === Number(eventId)) : [];
 
                 const events = filteredEvents;
 
@@ -50,7 +64,7 @@ const Page = ({ params }: any) => {
             }
         }
 
-        fetchDateandTime(eventId);
+        fetchDateandTime();
     }, [eventId]);
 
     return (
@@ -77,7 +91,7 @@ const Page = ({ params }: any) => {
                 </div>
                 <div className="w-3/4 flex">
                     <ul className="w-full">
-                        {events.map(event => (
+                        {events.map((event: Event) => (
                             <li key={event.eventId} className="flex flex-col w-full">
                                 <div className="flex flex-col w-full pl-4 bg-gray-200 h-screen">
                                     <div className="flex justify-center items-center text-2xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-6xl w-full mt-4">

@@ -113,6 +113,10 @@ const UsersTab = () => {
       const response = await axios.put(`/api/user/updateUsers`, formData);
       const updatedUser = response.data.data;
       setUsers(users.map(user => user.userId === updatedUser.userId ? updatedUser : user));
+      toast({
+        duration: 2000,
+        description: "User updated successfully"
+      })
       setFormData({
         userId: "",
         username: "",
@@ -313,16 +317,16 @@ const UsersTab = () => {
           </div>
         </div>
 
-        <div className="flex justify-between mb-8 mt-8">
-          <Table className="w-full">
-            <TableBody className="w-full">
-              <TableRow>
-                <TableCell className="w-1/4">Username</TableCell>
+        <div className="flex justify-between mb-8 mt-8 top-14 sticky rounded-md z-10">
+          <Table className="w-full rounded-lg text-neutral-950">
+            <TableBody className="w-full rounded-lg">
+              <TableRow className="text-gray-200 hover:bg-neutral-950 rounded-lg bg-neutral-900">
+                <TableCell className="w-1/4 rounded-tl-lg">Username</TableCell>
                 <TableCell className="w-1/4">Email Address</TableCell>
                 <TableCell className="w-1/4">User Type</TableCell>
-                <TableCell className="w-1/4">Action</TableCell>
+                <TableCell className="w-1/4 rounded-tr-lg">Action</TableCell>
               </TableRow>
-              <TableRow className="text-black">
+              <TableRow className="text-black bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
                 <TableCell>
                   <input
                     type="text"
@@ -370,16 +374,17 @@ const UsersTab = () => {
         <div className="flex justify-between mb-4">
           {loading ? ( 
             <div>Loading</div>
-          ) : (<Table>
-            <TableBody className="w-full">
-              <TableRow>
-                <TableCell>Username</TableCell>
+          ) : (<Table className="w-full rounded-lg text-neutral-950">
+            <TableBody className="w-full rounded-lg">
+              <TableRow className="top-0 sticky rounded-xl bg-neutral-900 text-gray-200 hover:bg-neutral-950">
+                <TableCell className="rounded-tl-lg">Username</TableCell>
                 <TableCell>Email Address</TableCell>
                 <TableCell>User Type</TableCell>
                 <TableCell>Action</TableCell>
+                <TableCell className="rounded-tr-lg"></TableCell>
               </TableRow>
               {searchResult.length > 0 ? searchResult.map((user: User) => (
-                <TableRow key={user.userId}>
+                <TableRow key={user.userId} className="bg-gray-200 hover:bg-gray-300">
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>{user.userType}</TableCell>
@@ -388,7 +393,7 @@ const UsersTab = () => {
                   </TableCell>
                 </TableRow>
               )) : users.map((user: User) => (
-                <TableRow key={user.userId}>
+                <TableRow key={user.userId} className="bg-gray-200 hover:bg-gray-300">
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>{user.userType}</TableCell>

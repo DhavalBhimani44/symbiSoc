@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import Card from "@mui/joy/Card";
-import BasicCard from "@/components/BasicCard";
+import BasicCard from "@/components/PastBasicCard";
 import UsersTab from "@/components/UsersTab";
 
 const Page = () => {

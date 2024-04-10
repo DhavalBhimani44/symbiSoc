@@ -1,7 +1,8 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BasicCard from "@/components/BasicCard";
+import UpcomingBasicCard from "@/components/UpcomingBasicCard";
+import PastBasicCard from "@/components/PastBasicCard";
 import Link from "next/link";
 
 interface Event {
@@ -75,17 +76,9 @@ const Page = () => {
                             <h1>Upcoming Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            {loading ? (
-                                <div>Loading...</div>
-                            ) : upcomingEvents.length === 0 ? (
-                                <div>No upcoming events</div>
-                            ) : (
-                                <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
-                                    {upcomingEvents.map((event: Event) => (
-                                        <BasicCard key={event.id} event={event} userRole="incharge" />
-                                    ))}
-                                </div>
-                            )}
+                            <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                <UpcomingBasicCard userRole="incharge" />
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
@@ -93,17 +86,9 @@ const Page = () => {
                             <h1>Past Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
-                            {loading ? (
-                                <div>Loading...</div>
-                            ) : pastEvents.length === 0 ? (
-                                <div>No past events</div>
-                            ) : (
-                                <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
-                                    {pastEvents.map((event: Event) => (
-                                        <BasicCard key={event.id} event={event} userRole="incharge" />
-                                    ))}
-                                </div>
-                            )}
+                            <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                <PastBasicCard userRole="incharge" />
+                            </div>
                         </div>
                     </div>
                 </div>

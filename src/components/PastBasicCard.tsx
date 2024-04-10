@@ -26,14 +26,18 @@ interface Event {
 export default function BasicCard({ userRole }: BasicCardProps) {
   const [events, setEvents] = useState([]);
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('/api/event/viewEvents');
-        setEvents(response.data);
+        const currentDate = new Date();
+        setEvents(response.data.filter((event: Event) => new Date(event.eventDate) <= currentDate));
+        setLoading(false);
       } catch (error) {
         console.log('Error fetching blogs: ', error);
+        setLoading(false);
       }
     };
     fetchEvents();
@@ -46,19 +50,6 @@ export default function BasicCard({ userRole }: BasicCardProps) {
         console.error('Event not found');
         return;
       }
-  
-      const eventDate = new Date(eventToDelete.eventDate);
-      const currentDate = new Date();
-  
-      if (eventDate < currentDate) {
-        toast({
-          duration: 2000,
-          description: 'Cannot delete past events.'
-        });
-        console.log('Cannot delete past events.');
-        return;
-      }
-  
       await axios.delete('/api/event/deleteEvents', {
         data: {
           eventId: eventId
@@ -77,7 +68,6 @@ export default function BasicCard({ userRole }: BasicCardProps) {
       });
     }
   };
-  
 
   const handleRegister = async (eventId: number) => {
     try {
@@ -118,76 +108,73 @@ export default function BasicCard({ userRole }: BasicCardProps) {
 
   return (
     <div className='w-full my-6'>
-      <ul>
-        <div className='flex flex-wrap justify-around w-full'>
-          {events.map((event: any) => (
-            <Card
-              key={event}
-              className="mx-2 my-4 shadow-cyan-600 shadow-md transition-transform transform hover:translate-y-[-5px] hover:scale-105 hover:shadow-md hover:shadow-blue-700"
-            >
-              <div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
-                  <Image width={150} height={150} src="/cbc-logo.png" alt='image' loading='lazy' />
-                </AspectRatio>
-
+      {loading ? (
+        <div>Loading</div>
+      ) : events.length === 0 ? (
+        <div>No past events</div>
+      ): (
+        <ul>
+          <div className='flex flex-wrap justify-around w-full'>
+            {events.map((event: any) => (
+              <Card
+                key={event}
+                sx={{ width: 320 }}
+                className="mx-2 my-4 shadow-cyan-600 shadow-md transition-transform transform hover:translate-y-[-5px] hover:scale-105 hover:shadow-md hover:shadow-blue-700 w-full sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
+              >
                 <div>
-                  <Typography level="title-lg">
-                    {event.eventName}
-                  </Typography>
-                  <li key={event}>
-                    <div>
-                      Event Name: {event.eventName}
-                    </div>
-                    <div>
-                      Event Description: {event.eventDescription}
-                    </div>
-                    <div>
-                      Organising Club: {event.organisingClub}
-                    </div>
-                  </li>
-                </div>
-              </div>
+                  <AspectRatio minHeight="120px" maxHeight="200px">
+                    <Image width={150} height={150} src="/cbc-logo.png" alt='image' loading='lazy' />
+                  </AspectRatio>
 
-              <CardContent orientation="horizontal" className="flex justify-between items-center">
-                {userRole === "incharge" && (
+                  <div>
+                    <Typography level="title-lg">
+                      {event.eventName}
+                    </Typography>
+                    <li key={event}>
+                      <div>
+                        Event Name: {event.eventName}
+                      </div>
+                      <div>
+                        Event Description: {event.eventDescription}
+                      </div>
+                      <div>
+                        Organising Club: {event.organisingClub}
+                      </div>
+                    </li>
+                  </div>
+                </div>
+
+                <CardContent orientation="horizontal" className="flex justify-between items-center">
+                  {userRole === "incharge" && (
+                    <Button
+                      variant="solid"
+                      size="md"
+                      color="danger"
+                      aria-label="Delete Event"
+                      onClick={() => {
+                        handleDelete(event.eventId)
+                      }}
+                      sx={{ fontWeight: 600 }}
+                    >
+                      Delete
+                    </Button>
+                  )}
                   <Button
                     variant="solid"
                     size="md"
-                    color="danger"
-                    aria-label="Delete Event"
-                    onClick={() => {
-                      handleDelete(event.eventId)
-                    }}
+                    color="primary"
+                    aria-label="More Info"
+                    onClick={() => eventDetail(event.eventId)}
                     sx={{ fontWeight: 600 }}
                   >
-                    Delete
+                    More Info
                   </Button>
-                )}
-                <Button
-                  variant="solid"
-                  size="md"
-                  color="primary"
-                  aria-label="Register Event"
-                  onClick={() => handleRegister(event.eventId)}
-                  sx={{ fontWeight: 600 }}
-                >
-                  Register
-                </Button>
-                <Button
-                  variant="solid"
-                  size="md"
-                  color="primary"
-                  aria-label="More Info"
-                  onClick={() => eventDetail(event.eventId)}
-                  sx={{ fontWeight: 600 }}
-                >
-                  More Info
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </ul>
+      )}
     </div>
   );
 }

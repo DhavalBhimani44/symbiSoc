@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import BasicCard from "@/components/BasicCard";
+import PastBasicCard from "@/components/PastBasicCard";
+import UpcomingBasicCard from "@/components/UpcomingBasicCard";
 
 const page = () => {
     const [events, setEvents] = useState([]);
@@ -72,19 +73,23 @@ const page = () => {
                 </div>
                 <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundSize: 'cover', height: '1000', width: '1000' }}>
                     <div className="flex flex-col w-full">
-                        <div className="flex text-6xl w-full h-full justify-center items-center text-white">
-                            Upcoming Events
+                        <div className="flex text-6xl w-full justify-center items-center text-white my-2">
+                            <h1>Upcoming Events</h1>
                         </div>
-                        <div className="flex text-4xl w-full h-full">
-                            {loading ? (
-                                <div>Loading...</div>
-                            ) : events.length === 0 ? (
-                                <div>No upcoming events</div>
-                            ) : (
-                                <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
-                                    <BasicCard userRole="incharge" />
-                                </div>
-                            )}
+                        <div className="flex text-4xl w-full">
+                            <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                <UpcomingBasicCard userRole="incharge" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-full">
+                        <div className="flex text-6xl w-full justify-center items-center text-white my-2">
+                            <h1>Past Events</h1>
+                        </div>
+                        <div className="flex text-4xl w-full">
+                            <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                <PastBasicCard userRole="incharge" />
+                            </div>
                         </div>
                     </div>
                 </div>

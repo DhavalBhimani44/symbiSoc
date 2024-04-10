@@ -54,6 +54,7 @@ const UsersTab = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState<User[]>([]);
   const [isopen, setIsopen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const toggleDropdown = () => {
     if (isopen) {
@@ -81,8 +82,10 @@ const UsersTab = () => {
         const response = await axios.get('/api/user/getUsers');
         console.log(response.data);
         setUsers(response.data);
+        setLoading(false);
       } catch (error) {
         console.log('Error fetching users: ', error);
+        setLoading(false);
       }
     };
     fetchUsers();
@@ -310,7 +313,7 @@ const UsersTab = () => {
           </div>
         </div>
 
-        <div className="flex justify-between mb-4">
+        <div className="flex justify-between mb-8 mt-8">
           <Table className="w-full">
             <TableBody className="w-full">
               <TableRow>
@@ -365,7 +368,9 @@ const UsersTab = () => {
         </div>
 
         <div className="flex justify-between mb-4">
-          <Table>
+          {loading ? ( 
+            <div>Loading</div>
+          ) : (<Table>
             <TableBody className="w-full">
               <TableRow>
                 <TableCell>Username</TableCell>
@@ -396,7 +401,7 @@ const UsersTab = () => {
                 </TableRow>
               ))}
             </TableBody>
-          </Table>
+          </Table>)}
         </div>
       </div>
     </>

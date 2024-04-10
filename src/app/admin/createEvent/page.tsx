@@ -21,6 +21,11 @@ const page = () => {
                             View Events
                         </Link>
                     </div>
+                    <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                        <Link href="/admin" className="w-full hover:border-l-4 hover:border-green-600 hover:text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            Profile
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className="flex w-3/4">

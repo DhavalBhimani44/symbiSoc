@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import moment from "moment";
 
-interface Event{
+interface Event {
     eventId: number,
     eventName: string,
     eventDescription: string,
@@ -41,7 +41,7 @@ const Page = ({ params }: any) => {
 
     useEffect(() => {
         const fetchDateandTime = async () => {
-            try {                                
+            try {
                 const response = await axios.get('/api/event/viewEvents');
                 const allEvents = response.data;
                 const filteredEvents = eventId ? allEvents.filter((event: Event) => event.eventId === Number(eventId)) : [];
@@ -58,7 +58,7 @@ const Page = ({ params }: any) => {
 
                 setEventDate(formattedEventDate);
                 setEventTime(formattedEventTime);
-                
+
             } catch (error) {
                 console.error("Error fetching Date and Time: ", error)
             }
@@ -85,6 +85,11 @@ const Page = ({ params }: any) => {
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/incharge/registeredEvents" className="w-full hover:border-l-4 hover:border-blue-600 hover:text-blue-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Registered Events
+                            </Link>
+                        </div>
+                        <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                            <Link href="/incharge" className="w-full hover:border-l-4 hover:border-green-600 hover:text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                                Profile
                             </Link>
                         </div>
                     </div>

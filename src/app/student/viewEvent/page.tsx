@@ -50,40 +50,45 @@ const Page = () => {
     };
 
     return (
-        <><div className="flex w-full h-full">                
-                <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                    <div className="top-14 z-10 fixed w-1/4">
-                        <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href='/student/viewEvent' className="w-full border-l-4 border-red-600 text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
-                                View Events
-                            </Link>
-                        </div>
-                        <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href='/student/registeredEvents' className="w-full hover:border-l-4 hover:border-yellow-600 hover:text-yellow-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
-                                Registered Events
-                            </Link>
-                        </div>
+        <><div className="flex w-full h-full">
+            <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
+                <div className="top-14 z-10 fixed w-1/4">
+                    <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                        <Link href='/student/viewEvent' className="w-full border-l-4 border-red-600 text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            View Events
+                        </Link>
                     </div>
-                </div>
-                <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-                    <div className="flex flex-col w-full">
-                        <div className="flex text-6xl w-full justify-center items-center text-white">
-                            <h1>Event List</h1>
-                        </div>
-                        <div className="flex text-4xl w-full">
-                            {loading ? (
-                                <div>Loading...</div>
-                            ) : events.length === 0 ? (
-                                <div>No upcoming events.</div>
-                            ) : (
-                                <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
-                                    <BasicCard userRole="student" />
-                                </div>
-                            )}
-                        </div>
+                    <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                        <Link href='/student/registeredEvents' className="w-full hover:border-l-4 hover:border-yellow-600 hover:text-yellow-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            Registered Events
+                        </Link>
+                    </div>
+                    <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
+                        <Link href="/student" className="w-full hover:border-l-4 hover:border-green-600 hover:text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            Profile
+                        </Link>
                     </div>
                 </div>
             </div>
+            <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
+                <div className="flex flex-col w-full">
+                    <div className="flex text-6xl w-full justify-center items-center text-white">
+                        <h1>Event List</h1>
+                    </div>
+                    <div className="flex text-4xl w-full">
+                        {loading ? (
+                            <div>Loading...</div>
+                        ) : events.length === 0 ? (
+                            <div>No upcoming events.</div>
+                        ) : (
+                            <div className={`w-full ${isVisible ? 'slide-in' : ''}`}>
+                                <BasicCard userRole="student" />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
         </>
     );
 };

@@ -318,7 +318,7 @@ const UsersTab = () => {
         </div>
 
         <div className="flex justify-between mb-8 mt-8 top-14 sticky rounded-md z-10">
-          <Table className="w-full rounded-lg text-neutral-950">
+          <Table className="w-full rounded-lg text-neutral-950 text-sm sm:text-sm md:text-sm lg:text-md xl:text-md">
             <TableBody className="w-full rounded-lg">
               <TableRow className="text-gray-200 hover:bg-neutral-950 rounded-lg bg-neutral-900">
                 <TableCell className="w-1/4 rounded-tl-lg">Username</TableCell>
@@ -374,7 +374,7 @@ const UsersTab = () => {
         <div className="flex justify-between mb-4">
           {loading ? ( 
             <div>Loading</div>
-          ) : (<Table className="w-full rounded-lg text-neutral-950">
+          ) : (<Table className="w-full rounded-lg text-neutral-950 text-sm sm:text-sm md:text-sm lg:text-md xl:text-md">
             <TableBody className="w-full rounded-lg">
               <TableRow className="top-0 sticky rounded-xl bg-neutral-900 text-gray-200 hover:bg-neutral-950">
                 <TableCell className="rounded-tl-lg">Username</TableCell>

@@ -15,7 +15,7 @@ export default function StudentPage() {
 
     useEffect(() => {
         setIsVisible(true);
-    },[])
+    }, [])
 
     useEffect(() => {
         const registeredEvents = async () => {
@@ -35,7 +35,7 @@ export default function StudentPage() {
         <>
             <div className="flex w-full h-full">
                 <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                    <div className="top-14 z-10 fixed w-1/4">
+                    <div className="top-14 z-10 fixed w-1/4 font-mono">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/student/viewEvent" className="w-full hover:border-l-4 hover:border-red-600 hover:text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 View Events
@@ -57,7 +57,7 @@ export default function StudentPage() {
                 <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
                     <div className="flex flex-col w-full">
                         <div className="flex text-6xl w-full justify-center items-center text-white">
-                            <h1>Registered Events</h1>
+                            <h1 className="text-2xl sm:text-xl md:text-2xl lg:text-4xl px-4 py-2 rounded-md transition ease-in-out duration-400 text-emerald-600 hover:text-gray-200 xl:text-6xl w-fit h-fit bg-transparent hover:bg-emerald-700 shadow-sky-500 font-serif">Registered Events</h1>
                         </div>
                         <div className="flex text-4xl w-full">
                             {loading ? (

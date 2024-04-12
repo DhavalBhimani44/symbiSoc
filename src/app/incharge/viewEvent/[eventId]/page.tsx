@@ -71,7 +71,7 @@ const Page = ({ params }: any) => {
         <>
             <div className="flex w-full h-screen">
                 <div className="flex flex-col w-1/4 z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                    <div className="top-14 z-10 fixed w-1/4">
+                    <div className="top-14 z-10 fixed w-1/4 font-mono">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/incharge/createEvent" className="w-full hover:border-l-4 hover:border-red-600 hover:text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Create Event

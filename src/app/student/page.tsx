@@ -49,7 +49,7 @@ export default function StudentPage() {
         <>
             <div className="flex w-full h-screen">
                 <div className="flex flex-col w-1/4 z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                    <div className="top-14 z-10 fixed w-1/4">
+                    <div className="top-14 z-10 fixed w-1/4 font-mono">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/student/viewEvent" className="w-full hover:border-l-4 hover:border-red-600 hover:text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 View Events
@@ -61,42 +61,41 @@ export default function StudentPage() {
                             </Link>
                         </div>
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href="/student" className="w-full hover:border-l-4 hover:border-green-600 hover:text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            <Link href="/student" className="w-full hover:border-l-4 border-green-600 text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Profile
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className="flex w-3/4 justify-around">
-                    {loading ? (
-                        <div className="text-4xl italic font-semibold">Is it really you ??</div>
-                    ) : (
-                        <div className="flex flex-col text-4xl slide-in">
-                            <div className="flex justify-start flex-col">
-                                <div className="text-blue-500 text-6xl font-bold">Welcome back</div>
-                                <div className="font-semibold">{username}</div>
-                            </div>
+                <div className="flex w-3/4 justify-around bg-gray-200">
+                    <div className="flex my-6 justify-around w-full">
+                        {loading ? (
+                            <div className="text-4xl italic font-semibold">Is it really you ??</div>
+                        ) : (
+                            <div className="flex flex-col text-4xl slide-in font-serif">
+                                <div className="flex justify-start flex-col">
+                                    <div className="text-blue-500 text-6xl font-bold">Welcome back</div>
+                                    <div className="font-semibold">{username}</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div className="text-blue-500 font-semibold">Total event registration : </div>
-                                <div className="">{totalRegistration}</div>
-                            </div>
+                                <div className="flex my-8 justify-start font-mono font-thin">
+                                    <div className="text-blue-500 font-semibold">Total attended events : {totalRegistration}</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div>SIT has </div>
-                                <div className="font-semibold text-blue-500">{event}</div>
-                                <div className=""> upcoming event for you</div>
-                            </div>
+                                <div className="flex my-8 justify-start font-thin">
+                                    <div>SIT has {event} upcoming event for you</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div className="italic">Hurry up! The seats are filling fast !!</div>
+                                <div className="flex my-8 justify-start font-thin">
+                                    <div className="italic">Hurry up! The seats are filling fast !!</div>
+                                </div>
                             </div>
+                        )}
+                        <div className="flex">
+                            <Button onClick={logout}>
+                                Sign out
+                            </Button>
                         </div>
-                    )}
-                    <div className="flex">
-                        <Button onClick={logout}>
-                            Sign out
-                        </Button>
                     </div>
                 </div>
             </div>

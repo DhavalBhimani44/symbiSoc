@@ -83,7 +83,7 @@ const CreateEventForm = () => {
 
     return (
         <div className={`w-full lg:w-full xl:w-full px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200`} style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-            <div className={`flex flex-col justify-center items-center ${isVisible ? 'slide-in' : ''}`}>
+            <div className={`font-mono flex flex-col justify-center items-center ${isVisible ? 'slide-in' : ''}`}>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className='w-full flex flex-col justify-center items-center py-1'>
                         <div className="flex flex-col w-full min-h-full space-y-2 justify-center items-center">
@@ -124,7 +124,7 @@ const CreateEventForm = () => {
                                         name='organisingClub'
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel><div className='lg:text-xl sm:text-lg'>Organising CLub</div></FormLabel>
+                                                <FormLabel><div className='lg:text-xl sm:text-lg'>Organising CLub*</div></FormLabel>
                                                 <FormControl>
                                                     <Select {...field} onValueChange={(selectedValue) => form.setValue('organisingClub', selectedValue)}>
                                                         <SelectTrigger className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black">
@@ -201,7 +201,7 @@ const CreateEventForm = () => {
                                         name='eventPlatform'
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform (if online)*</div></FormLabel>
+                                                <FormLabel><div className="lg:text-xl sm:text-lg">Event Platform*</div></FormLabel>
                                                 <FormControl>
                                                     <Input placeholder="Platform" className="w-48 md:w-52 lg:w-56 xl:w-60 shadow-lg text-black" {...field} />
                                                 </FormControl>
@@ -304,7 +304,7 @@ const CreateEventForm = () => {
                             </div>
                         </div>
                         <div className='flex flex-col w-full justify-center items-center mt-4'>
-                            <Button className='w-max h-fit text-md shadow-inner' type='submit'>
+                            <Button className='w-max h-fit hover:shadow active:translate-y-[2px] hover:-translate-y-[1px] text-md shadow-inner' type='submit'>
                                 Submit
                             </Button>
                         </div>

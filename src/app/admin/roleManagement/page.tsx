@@ -12,7 +12,7 @@ export default function InchargePage() {
 
     useEffect(() => {
         setIsVisible(true);
-    },[])
+    }, [])
 
     const logout = async () => {
         try {
@@ -27,7 +27,7 @@ export default function InchargePage() {
         <>
             <div className="flex w-full h-full">
                 <div className="flex flex-col w-1/4 h-screen z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                <div className="top-14 z-10 fixed w-1/4">
+                    <div className="top-14 z-10 fixed w-1/4 font-mono">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/admin/roleManagement" className="w-full border-l-4 border-red-600 text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Role Management
@@ -52,7 +52,7 @@ export default function InchargePage() {
                 </div>
 
                 <div className='w-3/4 bg-fixed px-4 sm:px-2 md:px-4 lg:px-4 xl:px-4 py-2 shadow-2xl text-gray-200 relative antialiased' style={{ backgroundImage: 'url("/bg4.jpg")', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '100', width: '100' }}>
-                    <div className="flex flex-col w-full">                        
+                    <div className="flex flex-col w-full">
                         <div className="flex flex-col w-full">
                             <div className={`flex w-full my-2 ${isVisible ? 'slide-in' : ''}`}>
                                 <UsersTab />

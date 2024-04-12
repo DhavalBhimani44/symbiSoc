@@ -50,7 +50,7 @@ export default function InchargePage() {
         <>
             <div className="flex w-full h-screen">
                 <div className="flex flex-col w-1/4 z-10 top-14 sticky text-gray-300 bg-neutral-900">
-                    <div className="top-14 z-10 fixed w-1/4">
+                    <div className="top-14 z-10 fixed w-1/4 font-mono">
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
                             <Link href="/admin/roleManagement" className="w-full hover:border-l-4 hover:border-red-600 hover:text-red-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Role Management
@@ -67,7 +67,7 @@ export default function InchargePage() {
                             </Link>
                         </div>
                         <div className="flex w-full transition-transform duration-300 transform hover:translate-x-2">
-                            <Link href="/admin" className="w-full hover:border-l-4 hover:border-green-600 hover:text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
+                            <Link href="/admin" className="w-full border-l-4 border-green-600 text-green-600 hover:p-2 flex justify-around text-sm sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl p-1 lg:p-2 xl:p-2">
                                 Profile
                             </Link>
                         </div>
@@ -75,32 +75,34 @@ export default function InchargePage() {
                 </div>
 
                 <div className="flex w-3/4 justify-around">
-                    {loading ? (
-                        <div className="text-4xl italic font-semibold">Ii was a mess here without you admin !!</div>
-                    ) : (
-                        <div className="flex flex-col text-4xl slide-in">
-                            <div className="flex justify-start flex-col">
-                                <div className="text-blue-500 text-6xl font-bold">Great to have you back</div>
-                                <div className="font-semibold">{username}</div>
-                            </div>
+                    <div className="flex justify-around w-full my-8">
+                        {loading ? (
+                            <div className="text-4xl italic font-semibold">It was a mess here without you admin !!</div>
+                        ) : (
+                            <div className="flex flex-col text-4xl slide-in font-serif">
+                                <div className="flex justify-start flex-col">
+                                    <div className="text-blue-500 text-6xl font-bold">Great to have you back</div>
+                                    <div className="font-semibold">{username}</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div>SIT has {upcomingCount} upcoming events</div>
-                            </div>
+                                <div className="flex my-8 justify-start">
+                                    <div>SIT has {upcomingCount} upcoming events</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div>SIT has already conducted {pastCount} events in all</div>
-                            </div>
+                                <div className="flex my-8 justify-start">
+                                    <div>SIT has already conducted {pastCount} events in all</div>
+                                </div>
 
-                            <div className="flex my-8 justify-start">
-                                <div className="italic">Hurry up! The seats are filling fast !!</div>
+                                <div className="flex my-8 justify-start">
+                                    <div className="italic">Hurry up! The seats are filling fast !!</div>
+                                </div>
                             </div>
+                        )}
+                        <div className="flex">
+                            <Button onClick={logout}>
+                                Sign out
+                            </Button>
                         </div>
-                    )}
-                    <div className="flex">
-                        <Button onClick={logout}>
-                            Sign out
-                        </Button>
                     </div>
                 </div>
             </div>

@@ -41,7 +41,6 @@ interface ChangeEvent {
   };
 }
 
-
 const UsersTab = () => {
   const { toast } = useToast();
   const [users, setUsers] = useState<User[]>([]);

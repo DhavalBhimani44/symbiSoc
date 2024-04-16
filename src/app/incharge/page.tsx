@@ -83,7 +83,7 @@ export default function InchargePage() {
                                 </div>
 
                                 <div className="flex my-8 justify-start font-mono font-thin">
-                                    <div className="text-blue-500 font-semibold">Total attended events : {totalRegistration}</div>
+                                    <div className="text-blue-500 font-semibold">Total registered events : {totalRegistration}</div>
                                 </div>
 
                                 <div className="flex my-8 justify-start font-serif font-thin">

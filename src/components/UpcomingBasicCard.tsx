@@ -36,7 +36,7 @@ export default function BasicCard({ userRole }: BasicCardProps) {
                 setEvents(response.data.filter((event: Event) => new Date(event.eventDate) > currentDate));
                 setLoading(false);
             } catch (error) {
-                console.log('Error fetching blogs: ', error);
+                console.log('Error fetching events: ', error);
                 setLoading(false);
             }
         };

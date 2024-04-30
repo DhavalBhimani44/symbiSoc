@@ -16,7 +16,7 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { signInSchema } from '@/app/validationSchema';
+import { signInSchema } from '@/lib/validationSchema';
 import { Sign } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { useToast } from '../ui/use-toast';
@@ -147,7 +147,7 @@ const SignInForm = () => {
           <div className='flex flex-col w-full justify-center items-center mt-6'>
             <Button className='w-max text-md shadow-indigo-500/50 hover:shadow-indigo-500/50 shadow-md hover:shadow-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 hover:bg-gradient-to-tl hover:from-fuchsia-500 hover:to-cyan-500 transition duration-300 ease-in-out' type='submit'>
               Sign in
-            </Button>            
+            </Button>
           </div>
         </form>
         <div className='mx-auto my-4 flex w-3/4 text-gray-200 items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>

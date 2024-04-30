@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
-import { FormSchema } from "@/app/validationSchema";
+import { FormSchema } from "@/lib/validationSchema";
 import { hash } from "bcryptjs";
 
 export async function POST(request: NextRequest) {
@@ -21,7 +21,10 @@ export async function POST(request: NextRequest) {
 
     if (existingUserByEmail) {
       console.log("Email already exists!");
-      return NextResponse.json({ message: "Email already exists" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Email already exists" },
+        { status: 400 }
+      );
     }
 
     const existingUserByUsername = await db.user.findUnique({
@@ -32,7 +35,10 @@ export async function POST(request: NextRequest) {
 
     if (existingUserByUsername) {
       console.log("Username already exists!");
-      return NextResponse.json({ message: "Username already exists" }, { status: 409 });
+      return NextResponse.json(
+        { message: "Username already exists" },
+        { status: 409 }
+      );
     }
 
     const hashedPassword = await hash(body.password, 10);
@@ -46,9 +52,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    return NextResponse.json({ user: newUser, message: "User created successfully" }, { status: 201 });
+    return NextResponse.json(
+      { user: newUser, message: "User created successfully" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("An error occurred:", error);
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

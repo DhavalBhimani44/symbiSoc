@@ -22,7 +22,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectValue, SelectTrigger } from '@/components/ui/select';
 import { useToast } from "@/components/ui/use-toast";
-import { FormSchema } from '@/app/validationSchema';
+import { FormSchema } from '@/lib/validationSchema';
 import 'react-toastify/dist/ReactToastify.css';
 
 type FormSchema = z.infer<typeof FormSchema>
@@ -371,7 +371,7 @@ const UsersTab = () => {
         </div>
 
         <div className="flex justify-between mb-4">
-          {loading ? ( 
+          {loading ? (
             <div>Loading</div>
           ) : (<Table className="w-full rounded-lg text-neutral-950 text-sm sm:text-sm md:text-sm lg:text-md xl:text-md">
             <TableBody className="w-full rounded-lg">

@@ -1,10 +1,9 @@
 "use client";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import TokenNavbar from "@/components/TokenNavbar";
+import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function StudentPage() {
     const router = useRouter();

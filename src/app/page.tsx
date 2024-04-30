@@ -1,20 +1,17 @@
 "use client";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Image from "next/image";
-import Marquee from "react-fast-marquee";
-import { useRouter } from "next/navigation";
-import Codex from "@/components/CardContainer/Codex";
-import CBC from "@/components/CardContainer/CBC";
-import WWR from "@/components/CardContainer/WWR";
-import GDSC from "@/components/CardContainer/GDSC";
-import SpaceAstronomy from "@/components/CardContainer/SpaceAstronomy";
-import Mosaic from "@/components/CardContainer/Mosaic";
-import BTP from "@/components/CardContainer/BTP";
-import TPC from "@/components/CardContainer/TPC";
 import AI from "@/components/CardContainer/AI";
 import ARVR from "@/components/CardContainer/ARVR";
+import BTP from "@/components/CardContainer/BTP";
+import CBC from "@/components/CardContainer/CBC";
+import Codex from "@/components/CardContainer/Codex";
+import GDSC from "@/components/CardContainer/GDSC";
+import Mosaic from "@/components/CardContainer/Mosaic";
+import SpaceAstronomy from "@/components/CardContainer/SpaceAstronomy";
+import TPC from "@/components/CardContainer/TPC";
+import WWR from "@/components/CardContainer/WWR";
 import { Heading } from "@/components/Heading";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();

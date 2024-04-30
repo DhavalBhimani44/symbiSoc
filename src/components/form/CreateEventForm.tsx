@@ -1,5 +1,13 @@
 "use client";
+import { eventSchema } from "@/lib/validationSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import * as z from 'zod';
+import { Button } from "../ui/button";
 import {
     Form,
     FormControl,
@@ -8,18 +16,9 @@ import {
     FormLabel,
     FormMessage,
 } from "../ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import * as z from 'zod';
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { useToast } from "../ui/use-toast";
-import { eventSchema } from "@/app/validationSchema";
-import moment from "moment";
-import React, { useState, useEffect } from 'react';
 
 type CreateEventForm = z.infer<typeof eventSchema>;
 
@@ -78,7 +77,6 @@ const CreateEventForm = () => {
             });
             console.log("Following error occurred: ", error);
         }
-        console.log(values);
     };
 
     return (
